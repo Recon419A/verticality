@@ -6,7 +6,7 @@ import net.morbz.minecraft.world.{DefaultLayers, World}
 
 object VerticalityMain extends App {
   val world = makeWorld
-  fill(world, Coordinate(-10, 0, -10), Coordinate(20, 0, 20), SimpleBlock.MOSSY_COBBLESTONE)
+  HollowCuboid(Coordinate(-20, 0, -20), Coordinate(20, 6, 20), SimpleBlock.MOSSY_COBBLESTONE).renderTo(world)
 
   private def makeWorld = {
     val layers = new DefaultLayers
@@ -27,24 +27,29 @@ object VerticalityMain extends App {
     }
   }
 
-  def fill(world: World, c1: Coordinate, c2: Coordinate, block: SimpleBlock): Unit = {
-    for (x <- c1.x to c2.x) {
-      for (y <- c1.y to c2.y) {
-        for (z <- c1.z to c2.z) {
-          world.setBlock(x, y, z, block)
+  case class Voxel(coordinate: Coordinate, block: SimpleBlock) {
+    def render(world: World): Unit = {
+      world.setBlock(coordinate.x, coordinate.y, coordinate.z, block)
+    }
+  }
+
+  case class FilledCuboid(minCoordinate: Coordinate, maxCoordinate: Coordinate, block: SimpleBlock) {
+    def renderTo(world: World): Unit = {
+      for (x <- minCoordinate.x to maxCoordinate.x) {
+        for (y <- minCoordinate.y to maxCoordinate.y) {
+          for (z <- minCoordinate.z to maxCoordinate.z) {
+            world.setBlock(x, y, z, block)
+          }
         }
       }
     }
   }
 
-  def hollowFill(world: World, c1: Coordinate, c2: Coordinate, block: SimpleBlock): Unit = {
-    fill(world, c1, c2, block)
-    val x_sign = Math.signum(c2.x - c1.x).toInt
-    val y_sign = Math.signum(c2.y - c1.y).toInt
-    val z_sign = Math.signum(c2.z - c1.z).toInt
-    val delta_coordinate = Coordinate(x_sign, y_sign, z_sign)
-    val inner_c1 = c1 + delta_coordinate
-    val inner_c2 = c2 - delta_coordinate
+  case class HollowCuboid(minCoordinate: Coordinate, maxCoordinate: Coordinate, block: SimpleBlock) {
+    def renderTo(world: World): Unit = {
+      FilledCuboid(minCoordinate, maxCoordinate, block).renderTo(world)
+      FilledCuboid(minCoordinate + Coordinate(1, 1, 1), maxCoordinate - Coordinate(1, 1, 1), SimpleBlock.AIR)
+    }
   }
 
   // Everything's set up so we're going to save the world.
