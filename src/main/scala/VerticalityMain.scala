@@ -48,7 +48,7 @@ object VerticalityMain extends App {
   case class HollowCuboid(minCoordinate: Coordinate, maxCoordinate: Coordinate, block: SimpleBlock) {
     def renderTo(world: World): Unit = {
       FilledCuboid(minCoordinate, maxCoordinate, block).renderTo(world)
-      FilledCuboid(minCoordinate + Coordinate(1, 1, 1), maxCoordinate - Coordinate(1, 1, 1), SimpleBlock.AIR)
+      FilledCuboid(minCoordinate + Coordinate(1, 1, 1), maxCoordinate - Coordinate(1, 1, 1), SimpleBlock.AIR).renderTo(world)
     }
   }
 
