@@ -10,9 +10,9 @@ object VerticalityMain extends App {
   // Make a floor for spawning on
   FilledCuboid(Coordinate(100, 3, 100)).renderTo(world, Coordinate(-50, 0, -50))
 
-  private val basicRoom = HollowCuboid(Coordinate(8, 4, 8))
-  basicRoom.renderTo(world, Coordinate(0, 10, 0))
-  basicRoom.renderTo(world, Coordinate(4, 10, 4))
+//  private val basicRoom = HollowCuboid(Coordinate(8, 4, 8))
+  BasicRoom.renderTo(world, Coordinate(0, 10, 0))
+  BasicRoom.renderTo(world, Coordinate(4, 10, 4))
 
 
   private def makeWorld = {
