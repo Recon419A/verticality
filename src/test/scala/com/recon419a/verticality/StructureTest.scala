@@ -8,11 +8,17 @@ import org.scalatest.Matchers
 
 class StructureTest extends FlatSpec with Matchers {
   "translatedVoxels" should "properly translate voxels" in {
-//    print(TestStructure.translatedVoxelList)
-    print(TestStructure.translatedVoxel(Coordinate(0, 0, 0)))
     TestStructure.translatedVoxel(Coordinate(0, 0, 0)) shouldBe None
     TestStructure.translatedVoxel(Coordinate(0, 1, 1)) shouldBe Some(Voxel(Coordinate(0, 1, 1), SimpleBlock.BRICK_BLOCK))
     TestStructure.translatedVoxel(Coordinate(1, 2, 2)) shouldBe None
+  }
+
+  "voxelList" should "list non-None voxels" in {
+    TestStructure.voxelList shouldBe List(Voxel(Coordinate(0, 0, 0), SimpleBlock.BRICK_BLOCK),
+      Voxel(Coordinate(0, 0, 1), SimpleBlock.BOOKSHELF),
+      Voxel(Coordinate(0, 1, 0), SimpleBlock.CLAY),
+      Voxel(Coordinate(1, 0, 0), SimpleBlock.COAL_BLOCK),
+      Voxel(Coordinate(1, 1, 0), SimpleBlock.COBBLESTONE))
   }
 
   "contains" should "return true for a value in the box" in {
