@@ -6,6 +6,10 @@ import org.scalatest.Matchers
 
 
 class StructureTest extends FlatSpec with Matchers {
+  "translatedVoxels" should "properly translate voxels" in {
+    TestStructure.translatedVoxels
+  }
+
   "contains" should "return true for a value in the box" in {
     StructureDummy.contains(Coordinate(2, 2, 2)) shouldBe true
   }
