@@ -1,7 +1,11 @@
 import net.morbz.minecraft.world.World
 
-case class Structure(voxels: List[Voxel]) {
+trait Structure {
+  val voxels: List[Voxel]
+  val offset: Coordinate
+
   def renderTo(world: World): Unit = {
-    voxels.foreach(voxel => voxel.)
+    val translatedVoxels = voxels.map(v => Voxel(v.coordinate + offset, v.block))
+    translatedVoxels.foreach(voxel => voxel.renderTo(world))
   }
 }
