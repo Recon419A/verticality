@@ -79,8 +79,4 @@ trait Structure {
   def contains(c: Coordinate): Boolean = {
     offset <= c && c <= (offset + maxCoordinate)
   }
-
-  private def renderIfExtant(v: Option[Voxel], world: World): Unit = {
-    v.foreach(_.renderTo(world))
-  }
 }
