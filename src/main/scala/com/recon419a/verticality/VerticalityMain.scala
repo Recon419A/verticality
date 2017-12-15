@@ -6,10 +6,13 @@ import net.morbz.minecraft.world.{DefaultLayers, World}
 
 object VerticalityMain extends App {
   val world = makeWorld
-  val floor = FilledCuboid(Coordinate(-100, 0, -100), Coordinate(100, 4, 100), SimpleBlock.BEDROCK)
-  private val basicRoom = HollowCuboid(Coordinate(-4, 0, -4), Coordinate(4, 4, 4), SimpleBlock.MOSSY_COBBLESTONE)
-  basicRoom.renderTo(world, Coordinate(0, 10, 0))
-  basicRoom.renderTo(world, Coordinate(4, 10, 4))
+
+  // Make a floor for spawning on
+  FilledCuboid(Coordinate(100, 3, 100)).renderTo(world, Coordinate(-50, 0, -50))
+
+  private val basicRoom = FilledCuboid(Coordinate(4, 4, 4))
+  basicRoom.renderTo(world, Coordinate(10, 10, 10))
+//  basicRoom.renderTo(world, Coordinate(4, 10, 4))
 
 
   private def makeWorld = {

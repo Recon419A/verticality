@@ -10,9 +10,9 @@ case class Coordinate(x: Int, y: Int, z: Int) {
   }
 
   def to(end: Coordinate): List[Coordinate] = {
-    for (x <- 0 to end.x;
-         y <- 0 to end.y;
-         z <- 0 to end.z)
+    for (x <- x to end.x;
+         y <- y to end.y;
+         z <- z to end.z)
       yield Coordinate(x, y, z)
   }.toList
 }

@@ -7,4 +7,8 @@ case class Voxel(coordinate: Coordinate, block: SimpleBlock) {
   def renderTo(world: World): Unit = {
     world.setBlock(coordinate.x, coordinate.y, coordinate.z, block)
   }
+
+  def offset(c: Coordinate) = {
+    Voxel(coordinate + c, block)
+  }
 }

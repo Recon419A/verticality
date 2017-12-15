@@ -3,16 +3,17 @@ package com.recon419a.verticality
 import net.morbz.minecraft.world.World
 
 trait Structure {
-  def blocks: Coordinate => Option[Voxel]
+  def voxels: Coordinate => Option[Voxel]
 
-  def maxCoordinate: Coordinate
+  val maxCoordinate: Coordinate
 
   def renderTo(world: World, offset: Coordinate = Coordinate(0, 0, 0)): Unit = {
-    val coordinates = offset to maxCoordinate + offset
-    coordinates.map(blocks).foreach(v => renderIfExtant(v, world))
+    val coordinates = Coordinate(0, 0, 0) to maxCoordinate
+    val offsetVoxels = coordinates.map(voxels).map(o => o.map(v => v.offset(offset)))
+    offsetVoxels.foreach(v => renderIfExtant(v, world))
   }
 
-  def renderIfExtant(v: Option[Voxel], world: World): Unit = {
+  private def renderIfExtant(v: Option[Voxel], world: World): Unit = {
     v.foreach(_.renderTo(world))
   }
 }
