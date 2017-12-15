@@ -15,8 +15,8 @@ object VerticalityMain extends App {
   val room2 = BasicRoom
   val offset = Coordinate(4, 0, 4)
 
-  BasicRoom.renderTo(world)
-  BasicRoom.renderTo(world)
+  BasicRoom(Coordinate(0, 10, 0)).renderTo(world)
+  BasicRoom(Coordinate(4, 10, 4)).renderTo(world)
 
 
   private def makeWorld = {

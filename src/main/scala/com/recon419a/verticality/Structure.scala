@@ -71,13 +71,13 @@ trait Structure {
   }
 
   /**
-    * Determines whether the structure's bounding box contains a coordinate.
+    * Determines whether the structure's translated bounding box contains a coordinate.
     *
     * @param c the coordinate to inspect
-    * @return whether that coordinate lies within the bounding box of this structure
+    * @return whether that coordinate lies within the translated bounding box of this structure
     */
   def contains(c: Coordinate): Boolean = {
-    offset <= c && c <= (maxCoordinate + offset)
+    offset <= c && c <= (offset + maxCoordinate)
   }
 
   private def renderIfExtant(v: Option[Voxel], world: World): Unit = {

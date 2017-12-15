@@ -1,6 +1,6 @@
 package com.recon419a.verticality
 
-case class HollowCuboid(maxCoordinate: Coordinate, offset: Coordinate) extends Structure {
+class HollowCuboid(override val maxCoordinate: Coordinate, override val offset: Coordinate) extends Structure {
   override def voxel: Coordinate => Option[Voxel] = {
     c => {
       if (List(0, maxCoordinate.x).contains(c.x) ||
