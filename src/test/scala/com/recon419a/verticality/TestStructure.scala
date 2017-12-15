@@ -17,7 +17,7 @@ object TestStructure extends Structure {
     *
     * @return the coordinate in a translated bounding box which is least in all dimensions
     */
-  override def offset: Coordinate = Coordinate(0, 0, 0)
+  override def offset: Coordinate = Coordinate(0, 1, 1)
 
   /**
     * A function defining the structure in a procedural manner. Defined as a function instead of a value to allow for
@@ -35,6 +35,6 @@ object TestStructure extends Structure {
       Coordinate(1, 0, 0) -> Some(Voxel(Coordinate(1, 0, 0), SimpleBlock.COAL_BLOCK)),
       Coordinate(1, 0, 1) -> None,
       Coordinate(1, 1, 0) -> Some(Voxel(Coordinate(1, 1, 0), SimpleBlock.COBBLESTONE)),
-      Coordinate(1, 1, 1) -> None)
+      Coordinate(1, 1, 1) -> None).withDefaultValue(None)
   }
 }

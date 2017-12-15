@@ -35,8 +35,8 @@ trait Structure {
     *
     * @return a function mapping from coordinates to voxels, translated by offset
     */
-  def translatedVoxels: Coordinate => Option[Voxel] = {
-    { coordinate => voxel(coordinate).map(_.translate(coordinate)) }
+  def translatedVoxel: Coordinate => Option[Voxel] = {
+    { coordinate => voxel(coordinate - offset).map(_.translate(offset)) }
   }
 
   /**

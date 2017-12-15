@@ -1,13 +1,18 @@
 package com.recon419a.verticality
 
 
+import net.morbz.minecraft.blocks.SimpleBlock
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 
 
 class StructureTest extends FlatSpec with Matchers {
   "translatedVoxels" should "properly translate voxels" in {
-    TestStructure.translatedVoxels
+//    print(TestStructure.translatedVoxelList)
+    print(TestStructure.translatedVoxel(Coordinate(0, 0, 0)))
+    TestStructure.translatedVoxel(Coordinate(0, 0, 0)) shouldBe None
+    TestStructure.translatedVoxel(Coordinate(0, 1, 1)) shouldBe Some(Voxel(Coordinate(0, 1, 1), SimpleBlock.BRICK_BLOCK))
+    TestStructure.translatedVoxel(Coordinate(1, 2, 2)) shouldBe None
   }
 
   "contains" should "return true for a value in the box" in {
