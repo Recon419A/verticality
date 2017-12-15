@@ -1,6 +1,6 @@
 import net.morbz.minecraft.blocks.SimpleBlock
 
-case class FilledCuboid(minCoordinate: Coordinate, maxCoordinate: Coordinate, override val offset: Coordinate, block: SimpleBlock) extends Structure {
+case class FilledCuboid(minCoordinate: Coordinate, maxCoordinate: Coordinate, block: SimpleBlock) extends Structure {
   override val voxels: List[Voxel] = {
     for (x <- minCoordinate.x to maxCoordinate.x;
          y <- minCoordinate.y to maxCoordinate.y;

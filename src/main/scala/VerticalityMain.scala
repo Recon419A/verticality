@@ -6,7 +6,7 @@ import net.morbz.minecraft.world.{DefaultLayers, World}
 
 object VerticalityMain extends App {
   val world = makeWorld
-  HollowCuboid(Coordinate(-4, 0, -4), Coordinate(4, 4, 4), Coordinate(0, 0, 0), SimpleBlock.MOSSY_COBBLESTONE).renderTo(world)
+  HollowCuboid(Coordinate(-4, 0, -4), Coordinate(4, 4, 4), SimpleBlock.MOSSY_COBBLESTONE).renderTo(world, Coordinate(0, 50, 0))
 
   private def makeWorld = {
     val layers = new DefaultLayers
