@@ -17,22 +17,6 @@ object VerticalityMain extends App {
     new World(level, layers)
   }
 
-  case class Coordinate(x: Int, y: Int, z: Int) {
-    def +(c: Coordinate): Coordinate = {
-      Coordinate(this.x + c.x, this.y + c.y, this.z + c.z)
-    }
-
-    def -(c: Coordinate): Coordinate = {
-      Coordinate(this.x - c.x, this.y - c.y, this.z - c.z)
-    }
-  }
-
-  case class Voxel(coordinate: Coordinate, block: SimpleBlock) {
-    def render(world: World): Unit = {
-      world.setBlock(coordinate.x, coordinate.y, coordinate.z, block)
-    }
-  }
-
   case class FilledCuboid(minCoordinate: Coordinate, maxCoordinate: Coordinate, block: SimpleBlock) {
     def renderTo(world: World): Unit = {
       for (x <- minCoordinate.x to maxCoordinate.x) {
