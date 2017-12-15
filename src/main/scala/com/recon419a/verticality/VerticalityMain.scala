@@ -8,15 +8,15 @@ object VerticalityMain extends App {
   val world = makeWorld
 
   // Make a floor for spawning on
-  FilledCuboid(Coordinate(100, 3, 100)).renderTo(world, Coordinate(-50, 0, -50))
+  FilledCuboid(Coordinate(100, 3, 100), Coordinate(-50, 0, -50)).renderTo(world)
 
 //  private val basicRoom = HollowCuboid(Coordinate(8, 4, 8))
   val room1 = BasicRoom
   val room2 = BasicRoom
   val offset = Coordinate(4, 0, 4)
 
-  BasicRoom.renderTo(world, Coordinate(0, 10, 0))
-  BasicRoom.renderTo(world, Coordinate(4, 10, 4))
+  BasicRoom.renderTo(world)
+  BasicRoom.renderTo(world)
 
 
   private def makeWorld = {

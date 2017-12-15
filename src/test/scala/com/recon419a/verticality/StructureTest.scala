@@ -31,7 +31,7 @@ class StructureTest extends FlatSpec with Matchers {
   }
 
   object StructureDummy extends Structure {
-    override def voxels: Coordinate => Option[Voxel] = ???
+    override def voxel: Coordinate => Option[Voxel] = ???
 
     override val maxCoordinate: Coordinate = Coordinate(4, 4, 4)
   }

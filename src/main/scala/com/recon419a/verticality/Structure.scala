@@ -21,12 +21,34 @@ trait Structure {
 
   /**
     * A function defining the structure in a procedural manner. Defined as a function instead of a value to allow for
-    * procedurally generated structures.
+    * procedurally generated structures. Returns Option[Voxel] so that None may be used to indicate the structure
+    * doesn't care about that location; this is useful for overlapping multiple structures together. Assumes that the
+    * structure's bounding box begins at the origin and extends as far as maxCoordinate.
     *
     * @return a function mapping from coordinates to voxels
     */
-  def voxels: Coordinate => Option[Voxel]
+  def voxel: Coordinate => Option[Voxel]
 
+  /**
+    * A function defining the translation of the voxels in a procedural manner. Represents the origin-based voxels
+    * translated by offset, or the "real location" of the object after translation.
+    *
+    * @return a function mapping from coordinates to voxels, translated by offset
+    */
+  def translatedVoxels: Coordinate => Option[Voxel] = {
+    { coordinate => voxel(coordinate).map(_.offset(coordinate)) }
+  }
+
+  /**
+    * All the relevant voxels to this object's origin-based pattern, baked out as a list. If the function defining
+    * this origin-based pattern is non-deterministic, this function will also be non-deterministic.
+    *
+    * @return a list of voxels representing this structure, located between the origin and maxCoordinate
+    */
+  def voxelList: List[Voxel] = {
+    (ORIGIN to maxCoordinate).map(voxel).flatten
+  }
+  
   /**
     * Render this structure to the provided world. This places the structure starting at offset and extending to
     * offset + maxCoordinate, and will cause the default generation of chunks containing the structure to be
@@ -36,7 +58,7 @@ trait Structure {
     */
   def renderTo(world: World): Unit = {
     val coordinates = Coordinate(0, 0, 0) to maxCoordinate
-    val offsetVoxels = coordinates.map(voxels).map(o => o.map(v => v.offset(offset)))
+    val offsetVoxels = coordinates.map(voxel).map(o => o.map(v => v.offset(offset)))
     offsetVoxels.foreach(v => renderIfExtant(v, world))
   }
 
