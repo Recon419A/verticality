@@ -1,3 +1,5 @@
+package com.recon419a.verticality
+
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.world.World
 

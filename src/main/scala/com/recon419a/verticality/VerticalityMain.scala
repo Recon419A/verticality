@@ -1,12 +1,16 @@
-import net.morbz.minecraft.blocks.DoorBlock.{DoorMaterial, HingeSide}
-import net.morbz.minecraft.blocks.states.Facing4State
-import net.morbz.minecraft.blocks.{DoorBlock, Material, SimpleBlock}
+package com.recon419a.verticality
+
+import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.level.{FlatGenerator, GameType, Level}
 import net.morbz.minecraft.world.{DefaultLayers, World}
 
 object VerticalityMain extends App {
   val world = makeWorld
-  HollowCuboid(Coordinate(-4, 0, -4), Coordinate(4, 4, 4), SimpleBlock.MOSSY_COBBLESTONE).renderTo(world, Coordinate(0, 50, 0))
+  val floor = FilledCuboid(Coordinate(-100, 0, -100), Coordinate(100, 4, 100), SimpleBlock.BEDROCK)
+  private val basicRoom = HollowCuboid(Coordinate(-4, 0, -4), Coordinate(4, 4, 4), SimpleBlock.MOSSY_COBBLESTONE)
+  basicRoom.renderTo(world, Coordinate(0, 10, 0))
+  basicRoom.renderTo(world, Coordinate(4, 10, 4))
+
 
   private def makeWorld = {
     val layers = new DefaultLayers

@@ -1,3 +1,5 @@
+package com.recon419a.verticality
+
 import net.morbz.minecraft.blocks.SimpleBlock
 
 case class FilledCuboid(minCoordinate: Coordinate, maxCoordinate: Coordinate, block: SimpleBlock) extends Structure {
