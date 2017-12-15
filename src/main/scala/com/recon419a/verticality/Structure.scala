@@ -36,7 +36,7 @@ trait Structure {
     * @return a function mapping from coordinates to voxels, translated by offset
     */
   def translatedVoxels: Coordinate => Option[Voxel] = {
-    { coordinate => voxel(coordinate).map(_.offset(coordinate)) }
+    { coordinate => voxel(coordinate).map(_.translate(coordinate)) }
   }
 
   /**
@@ -48,7 +48,17 @@ trait Structure {
   def voxelList: List[Voxel] = {
     (ORIGIN to maxCoordinate).map(voxel).flatten
   }
-  
+
+  /**
+    * All the relevant voxels to this object's translated pattern, represented as a list. If the function defining
+    * this pattern is non-deterministic, this function will also be non-deterministic.
+    *
+    * @return a list of voxels representing this structure, located between offset and offset + maxCoordinate
+    */
+  def translatedVoxelList: List[Voxel] = {
+    voxelList.map(_.translate(offset))
+  }
+
   /**
     * Render this structure to the provided world. This places the structure starting at offset and extending to
     * offset + maxCoordinate, and will cause the default generation of chunks containing the structure to be
@@ -57,9 +67,7 @@ trait Structure {
     * @param world a World object to render to
     */
   def renderTo(world: World): Unit = {
-    val coordinates = Coordinate(0, 0, 0) to maxCoordinate
-    val offsetVoxels = coordinates.map(voxel).map(o => o.map(v => v.offset(offset)))
-    offsetVoxels.foreach(v => renderIfExtant(v, world))
+    translatedVoxelList.foreach(_.renderTo(world))
   }
 
   /**

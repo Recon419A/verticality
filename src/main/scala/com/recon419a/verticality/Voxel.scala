@@ -8,7 +8,7 @@ case class Voxel(coordinate: Coordinate, block: SimpleBlock) {
     world.setBlock(coordinate.x, coordinate.y, coordinate.z, block)
   }
 
-  def offset(c: Coordinate): Voxel = {
+  def translate(c: Coordinate): Voxel = {
     Voxel(coordinate + c, block)
   }
 }

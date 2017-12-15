@@ -34,5 +34,7 @@ class StructureTest extends FlatSpec with Matchers {
     override def voxel: Coordinate => Option[Voxel] = ???
 
     override val maxCoordinate: Coordinate = Coordinate(4, 4, 4)
+
+    override def offset: Coordinate = ORIGIN
   }
 }
