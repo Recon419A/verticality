@@ -31,36 +31,15 @@ class StructureTest extends FlatSpec with Matchers {
       Voxel(Coordinate(1, 2, 1), SimpleBlock.COBBLESTONE))
   }
 
-  "contains" should "return true for a value in the box" in {
-    StructureDummy.contains(Coordinate(2, 2, 2)) shouldBe true
+  "contains" should "be false for a value in the non-translated bounding box" in {
+    TestStructure.contains(Coordinate(0, 0, 0)) shouldBe false
   }
 
-  it should "return false for a value less than the box in all dimensions" in {
-    StructureDummy.contains(Coordinate(-1, -1, -1)) shouldBe false
+  it should "be true for a value in the translated bounding box only" in {
+    TestStructure.contains(Coordinate(1, 2, 2)) shouldBe true
   }
 
-  it should "return false for a value greater than the box in one dimension" in {
-    StructureDummy.contains(Coordinate(2, 2, 5)) shouldBe false
+  it should "be false for a value aligned with the testing zone in two dimensions" in {
+    TestStructure.contains(Coordinate(-1, 2, 2)) shouldBe false
   }
-
-  it should "return true for a value along the lesser wall" in {
-    StructureDummy.contains(Coordinate(2, 0, 2)) shouldBe true
-  }
-
-  it should "return true for the greatest value in the box" in {
-    StructureDummy.contains(Coordinate(4, 4, 4)) shouldBe true
-  }
-
-  it should "return true for the least value in the box" in {
-    StructureDummy.contains(Coordinate(0, 0, 0)) shouldBe true
-  }
-
-  object StructureDummy extends Structure {
-    override def voxel: Coordinate => Option[Voxel] = { _ => None }
-
-    override val maxCoordinate: Coordinate = Coordinate(4, 4, 4)
-
-    override def offset: Coordinate = ORIGIN
-  }
-
 }
