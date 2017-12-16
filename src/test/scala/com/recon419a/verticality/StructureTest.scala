@@ -2,11 +2,14 @@ package com.recon419a.verticality
 
 
 import net.morbz.minecraft.blocks.SimpleBlock
+import net.morbz.minecraft.world.World
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
+import org.scalatest.mockito.MockitoSugar
+import org.mockito.Mockito._
 
 
-class StructureTest extends FlatSpec with Matchers {
+class StructureTest extends FlatSpec with Matchers with MockitoSugar {
   "translatedVoxels" should "properly translate voxels" in {
     TestStructure.translatedVoxel(Coordinate(0, 0, 0)) shouldBe None
     TestStructure.translatedVoxel(Coordinate(0, 1, 1)) shouldBe Some(Voxel(Coordinate(0, 1, 1), SimpleBlock.BRICK_BLOCK))
@@ -29,6 +32,16 @@ class StructureTest extends FlatSpec with Matchers {
       Voxel(Coordinate(0, 2, 1), SimpleBlock.CLAY),
       Voxel(Coordinate(1, 1, 1), SimpleBlock.COAL_BLOCK),
       Voxel(Coordinate(1, 2, 1), SimpleBlock.COBBLESTONE))
+  }
+
+  "renderTo" should "render the test structure properly" in {
+    val mockWorld = mock[World]
+    TestStructure.renderTo(mockWorld)
+    verify(mockWorld).setBlock(0, 1, 1, SimpleBlock.BRICK_BLOCK)
+    verify(mockWorld).setBlock(0, 1, 2, SimpleBlock.BOOKSHELF)
+    verify(mockWorld).setBlock(0, 2, 1, SimpleBlock.CLAY)
+    verify(mockWorld).setBlock(1, 1, 1, SimpleBlock.COAL_BLOCK)
+    verify(mockWorld).setBlock(1, 2, 1, SimpleBlock.COBBLESTONE)
   }
 
   "contains" should "be false for a value in the non-translated bounding box" in {
