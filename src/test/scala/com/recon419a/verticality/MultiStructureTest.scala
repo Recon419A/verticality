@@ -34,4 +34,14 @@ class MultiStructureTest extends FlatSpec with Matchers {
       Voxel(Coordinate(1, 1, 0), SimpleBlock.COBBLESTONE)
     )
   }
+
+  it should "totally ignore a fully concealed structure" in {
+    TestOverlappingComponentMultiStructure2.translatedVoxelList.toSet shouldBe Set(
+      Voxel(Coordinate(0, 0, 0), SimpleBlock.BRICK_BLOCK),
+      Voxel(Coordinate(0, 0, 1), SimpleBlock.BOOKSHELF),
+      Voxel(Coordinate(0, 1, 0), SimpleBlock.CLAY),
+      Voxel(Coordinate(1, 0, 0), SimpleBlock.COAL_BLOCK),
+      Voxel(Coordinate(1, 1, 0), SimpleBlock.COBBLESTONE)
+    )
+  }
 }

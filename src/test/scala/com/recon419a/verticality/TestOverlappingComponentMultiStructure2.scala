@@ -1,7 +1,7 @@
 package com.recon419a.verticality
 
-object TestOverlappingComponentMultiStructure extends MultiStructure {
-  override val components: List[Structure] = List(TestAtomicStructure, TestOriginStructure)
+object TestOverlappingComponentMultiStructure2 extends MultiStructure {
+  override val components: List[Structure] = List(TestOriginStructure, TestAtomicStructure)
 
   /**
     * The outermost corner (inclusive) of a bounding box starting at the origin. Defined as a function instead of a
