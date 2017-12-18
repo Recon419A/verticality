@@ -24,4 +24,14 @@ class MultiStructureTest extends FlatSpec with Matchers {
       Voxel(Coordinate(1, 2, 1), SimpleBlock.COBBLESTONE)
     )
   }
+
+  it should "return the option earliest in the list for overlapping structures" in {
+    TestOverlappingComponentMultiStructure.translatedVoxelList.toSet shouldBe Set(
+      Voxel(Coordinate(0, 0, 0), SimpleBlock.DIAMOND_BLOCK),
+      Voxel(Coordinate(0, 0, 1), SimpleBlock.BOOKSHELF),
+      Voxel(Coordinate(0, 1, 0), SimpleBlock.CLAY),
+      Voxel(Coordinate(1, 0, 0), SimpleBlock.COAL_BLOCK),
+      Voxel(Coordinate(1, 1, 0), SimpleBlock.COBBLESTONE)
+    )
+  }
 }
