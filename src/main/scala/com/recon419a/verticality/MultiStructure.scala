@@ -11,6 +11,6 @@ trait MultiStructure extends Structure {
     * @return a function mapping from coordinates to voxels
     */
   override def voxel: Coordinate => Option[Voxel] = {
-    coordinate => components.flatMap(_.voxel(coordinate)).headOption
+    coordinate => components.flatMap(_.translatedVoxel(coordinate)).headOption
   }
 }

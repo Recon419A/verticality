@@ -11,13 +11,13 @@ import org.mockito.Mockito._
 
 class StructureTest extends FlatSpec with Matchers with MockitoSugar {
   "translatedVoxels" should "properly translate voxels" in {
-    TestStructure.translatedVoxel(Coordinate(0, 0, 0)) shouldBe None
-    TestStructure.translatedVoxel(Coordinate(0, 1, 1)) shouldBe Some(Voxel(Coordinate(0, 1, 1), SimpleBlock.BRICK_BLOCK))
-    TestStructure.translatedVoxel(Coordinate(1, 2, 2)) shouldBe None
+    TestOffsetStructure.translatedVoxel(Coordinate(0, 0, 0)) shouldBe None
+    TestOffsetStructure.translatedVoxel(Coordinate(0, 1, 1)) shouldBe Some(Voxel(Coordinate(0, 1, 1), SimpleBlock.BRICK_BLOCK))
+    TestOffsetStructure.translatedVoxel(Coordinate(1, 2, 2)) shouldBe None
   }
 
   "voxelList" should "list non-None voxels" in {
-    TestStructure.voxelList shouldBe List(
+    TestOffsetStructure.voxelList shouldBe List(
       Voxel(Coordinate(0, 0, 0), SimpleBlock.BRICK_BLOCK),
       Voxel(Coordinate(0, 0, 1), SimpleBlock.BOOKSHELF),
       Voxel(Coordinate(0, 1, 0), SimpleBlock.CLAY),
@@ -26,7 +26,7 @@ class StructureTest extends FlatSpec with Matchers with MockitoSugar {
   }
 
   "translatedVoxelList" should "list non-None voxels with appropriate translation" in {
-    TestStructure.translatedVoxelList shouldBe List(
+    TestOffsetStructure.translatedVoxelList shouldBe List(
       Voxel(Coordinate(0, 1, 1), SimpleBlock.BRICK_BLOCK),
       Voxel(Coordinate(0, 1, 2), SimpleBlock.BOOKSHELF),
       Voxel(Coordinate(0, 2, 1), SimpleBlock.CLAY),
@@ -36,7 +36,7 @@ class StructureTest extends FlatSpec with Matchers with MockitoSugar {
 
   "renderTo" should "render the test structure properly" in {
     val mockWorld = mock[World]
-    TestStructure.renderTo(mockWorld)
+    TestOffsetStructure.renderTo(mockWorld)
     verify(mockWorld).setBlock(0, 1, 1, SimpleBlock.BRICK_BLOCK)
     verify(mockWorld).setBlock(0, 1, 2, SimpleBlock.BOOKSHELF)
     verify(mockWorld).setBlock(0, 2, 1, SimpleBlock.CLAY)
@@ -45,14 +45,14 @@ class StructureTest extends FlatSpec with Matchers with MockitoSugar {
   }
 
   "contains" should "be false for a value in the non-translated bounding box" in {
-    TestStructure.contains(Coordinate(0, 0, 0)) shouldBe false
+    TestOffsetStructure.contains(Coordinate(0, 0, 0)) shouldBe false
   }
 
   it should "be true for a value in the translated bounding box only" in {
-    TestStructure.contains(Coordinate(1, 2, 2)) shouldBe true
+    TestOffsetStructure.contains(Coordinate(1, 2, 2)) shouldBe true
   }
 
   it should "be false for a value aligned with the testing zone in two dimensions" in {
-    TestStructure.contains(Coordinate(-1, 2, 2)) shouldBe false
+    TestOffsetStructure.contains(Coordinate(-1, 2, 2)) shouldBe false
   }
 }
