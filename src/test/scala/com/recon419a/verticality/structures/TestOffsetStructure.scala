@@ -1,6 +1,6 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.structures
 
-import net.morbz.minecraft.blocks.SimpleBlock
+import com.recon419a.verticality.Coordinate
 
 object TestOffsetStructure extends TestStructure {
   /**

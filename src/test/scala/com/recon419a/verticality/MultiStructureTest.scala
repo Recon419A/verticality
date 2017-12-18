@@ -1,5 +1,6 @@
 package com.recon419a.verticality
 
+import com.recon419a.verticality.structures._
 import net.morbz.minecraft.blocks.SimpleBlock
 import org.scalatest.{FlatSpec, Matchers}
 

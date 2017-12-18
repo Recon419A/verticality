@@ -1,4 +1,6 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.structures
+
+import com.recon419a.verticality.{Coordinate, DEFAULT_MATERIAL, Structure, Voxel}
 
 class HollowCuboid(override val maxCoordinate: Coordinate, override val offset: Coordinate) extends Structure {
   override def voxel: Coordinate => Option[Voxel] = {

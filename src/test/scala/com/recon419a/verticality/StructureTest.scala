@@ -1,6 +1,7 @@
 package com.recon419a.verticality
 
 
+import com.recon419a.verticality.structures.TestOffsetStructure
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.world.World
 import org.scalatest.FlatSpec

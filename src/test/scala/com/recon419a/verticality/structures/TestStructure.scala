@@ -1,5 +1,6 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.structures
 
+import com.recon419a.verticality.{Coordinate, Structure, Voxel}
 import net.morbz.minecraft.blocks.SimpleBlock
 
 trait TestStructure extends Structure {

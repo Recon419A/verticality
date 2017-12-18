@@ -1,7 +1,9 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.structures
 
-object TestMultiComponentMultiStructure extends MultiStructure {
-  override val components: List[Structure] = List(TestOriginStructure, TestOffsetStructure)
+import com.recon419a.verticality._
+
+object TestOverlappingComponentMultiStructure2 extends MultiStructure {
+  override val components: List[Structure] = List(TestOriginStructure, TestAtomicStructure)
 
   /**
     * The outermost corner (inclusive) of a bounding box starting at the origin. Defined as a function instead of a
@@ -9,7 +11,7 @@ object TestMultiComponentMultiStructure extends MultiStructure {
     *
     * @return the coordinate in an origin-based bounding box which is greatest in all dimensions
     */
-  override def maxCoordinate: Coordinate = Coordinate(1, 2, 2)
+  override def maxCoordinate: Coordinate = Coordinate(1, 1, 1)
 
   /**
     * The offset of a structure's bounding box from the origin, measured to the minimum of each dimension. Defined as

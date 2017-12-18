@@ -1,4 +1,6 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.structures
+
+import com.recon419a.verticality.{Coordinate, MultiStructure}
 
 object TestSingleComponentMultiStructure extends MultiStructure {
   val components = List(TestOffsetStructure)

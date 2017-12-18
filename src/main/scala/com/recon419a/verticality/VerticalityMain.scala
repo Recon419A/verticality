@@ -1,5 +1,6 @@
 package com.recon419a.verticality
 
+import com.recon419a.verticality.structures.{BasicRoom, FilledCuboid}
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.level.{FlatGenerator, GameType, Level}
 import net.morbz.minecraft.world.{DefaultLayers, World}
