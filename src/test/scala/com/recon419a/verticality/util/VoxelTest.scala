@@ -9,19 +9,19 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class VoxelTest extends FlatSpec with Matchers with MockitoSugar {
   "translate" should "offset along the correct axes" in {
-    Voxel(1, 2, 3).translate(4, 5, 6) shouldBe Voxel(5, 7, 9, DEFAULT_MATERIAL)
+    Voxel(1, 2, 3) + Coordinate(4, 5, 6) shouldBe Voxel(5, 7, 9, DEFAULT_MATERIAL)
   }
 
   it should "work for negative values" in {
-    Voxel(1, 2, 3).translate(5, -3, 4) shouldBe Voxel(6, -1, 7)
+    Voxel(1, 2, 3) + Coordinate (5, -3, 4) shouldBe Voxel(6, -1, 7)
   }
 
   it should "work for non-default materials" in {
-    Voxel(1, 1, 1, SimpleBlock.BRICK_BLOCK).translate(1, 2, 3) shouldBe Voxel(2, 3, 4, SimpleBlock.BRICK_BLOCK)
+    Voxel(1, 1, 1, SimpleBlock.BRICK_BLOCK) + Coordinate(1, 2, 3) shouldBe Voxel(2, 3, 4, SimpleBlock.BRICK_BLOCK)
   }
 
   it should "infer zero for a missing z value" in {
-    Voxel(1, 2).translate(1, 2) shouldBe Voxel(2, 4)
+    Voxel(1, 2) + Coordinate(1, 2) shouldBe Voxel(2, 4)
   }
 
   "renderTo" should "call World.setBlock with the correct arguments" in {

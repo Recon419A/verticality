@@ -9,16 +9,8 @@ case class Voxel(coordinate: Coordinate, block: SimpleBlock) {
     world.setBlock(coordinate.x, coordinate.y, coordinate.z, block)
   }
 
-  def translate(c: Coordinate): Voxel = {
+  def +(c: Coordinate): Voxel = {
     Voxel(coordinate + c, block)
-  }
-
-  def translate(x: Int, y: Int, z: Int): Voxel = {
-    translate(Coordinate(x, y, z))
-  }
-
-  def translate(x: Int, y: Int): Voxel = {
-    translate(Coordinate(x ,y))
   }
 }
 
