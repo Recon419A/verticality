@@ -2,12 +2,12 @@ package com.recon419a.verticality.structures
 
 import com.recon419a.verticality.util.{Coordinate, Voxel}
 
-trait Structure[T <: Structure[T]] {
-  def voxels: Set[Voxel]
+case class Structure(voxels: Set[Voxel]) {
+  def +(coordinate: Coordinate): Structure = {
+    Structure(voxels.map(v => v + coordinate))
+  }
 
-  def apply(voxels: Set[Voxel]): T
-
-  def +(coordinate: Coordinate): T = {
-    apply(voxels.map(v => v + coordinate))
+  def -(other: Structure) = {
+    voxels.filterNot(voxel => other.voxels.map(_.coordinate) contains voxel.coordinate)
   }
 }
