@@ -15,6 +15,14 @@ class CoordinateTest extends FlatSpec with Matchers {
     Coordinate(1, -3, 4) - Coordinate(2, -2, 8) shouldBe Coordinate(-1, -1, -4)
   }
 
+  "/" should "handle a basic case" in {
+    Coordinate(2, 4, -8) / 2 shouldBe Coordinate(1, 2, -4)
+  }
+
+  it should "round appropriately" in {
+    Coordinate(2, 4, -8) / 3 shouldBe Coordinate(0, 1, -2)
+  }
+
   "<=" should "return true for a coordinate equal in all dimensions" in {
     Coordinate(1, 2, 3) <= Coordinate(1, 2, 3) shouldBe true
   }

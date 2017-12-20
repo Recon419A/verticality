@@ -9,6 +9,10 @@ case class Coordinate(x: Int, y: Int, z: Int) {
     Coordinate(x - c.x, y - c.y, z - c.z)
   }
 
+  def /(i: Int): Coordinate = {
+    Coordinate(x / i, y / i, z / i)
+  }
+
   def <=(c: Coordinate): Boolean = {
     x <= c.x && y <= c.y && z <= c.z
   }
