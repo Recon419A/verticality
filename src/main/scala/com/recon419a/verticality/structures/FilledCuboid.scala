@@ -1,17 +1,14 @@
 package com.recon419a.verticality.structures
 
-import com.recon419a.verticality.{Coordinate, ORIGIN, DEFAULT_MATERIAL, Structure, Voxel}
+import com.recon419a.verticality.{Coordinate, DEFAULT_MATERIAL, ORIGIN, Structure, Voxel}
+import net.morbz.minecraft.blocks.SimpleBlock
 
-class FilledCuboid(val maxCoordinate: Coordinate, val offset: Coordinate) extends Structure {
-  override def voxel: Coordinate => Option[Voxel] = c => {
-    if ((ORIGIN to maxCoordinate).contains(c)) {
-      Some(Voxel(c, DEFAULT_MATERIAL))
-    } else None
+trait FilledCuboid extends Structure {
+  val material: SimpleBlock = DEFAULT_MATERIAL
+
+  def voxel: Coordinate => Option[Voxel] = c => {
+    if ((ORIGIN to maxCoordinate).contains(c)) Some(Voxel(c, material)) else None
   }
 }
 
-object FilledCuboid {
-  def apply(maxCoordinate: Coordinate, offset: Coordinate): FilledCuboid = {
-    new FilledCuboid(maxCoordinate, offset)
-  }
-}
+case class CustomFilledCuboid(maxCoordinate: Coordinate, offset: Coordinate) extends FilledCuboid
