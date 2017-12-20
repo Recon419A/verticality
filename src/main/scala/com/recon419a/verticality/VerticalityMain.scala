@@ -1,18 +1,20 @@
 package com.recon419a.verticality
 
+import com.recon419a.verticality.structures.{Cuboid, Hallway}
+import com.recon419a.verticality.util.Coordinate
 import net.morbz.minecraft.level.{FlatGenerator, GameType, Level}
 import net.morbz.minecraft.world.{DefaultLayers, World}
 
 object VerticalityMain extends App {
   val world = makeWorld
 
-  // Make a floor for spawning on
-//  CustomFilledCuboid(Coordinate(100, 0, 100), Coordinate(-50, 2, -50)).renderTo(world)
+  makeFloor()
 
-//  val test = MultiStoryRoom(Coordinate(0, 10, 0), 4)
-//  val test = OffsetRoom(Coordinate(0, 10, 0))
-//  test.renderTo(world)
+  (Hallway(5, 5, 8) + Coordinate(0, 10)).renderTo(world)
 
+  private def makeFloor(): Unit = {
+    (Cuboid(50, 1, 50) + Coordinate(-25, 0, -25)).renderTo(world)
+  }
 
   private def makeWorld = {
     val layers = new DefaultLayers
