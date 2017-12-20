@@ -14,3 +14,9 @@ class OffsetRoom(val offset: Coordinate) extends MultiStructure {
     */
   override def maxCoordinate: Coordinate = Coordinate(12, 8, 12)
 }
+
+object OffsetRoom {
+  def apply(offset: Coordinate): OffsetRoom = {
+    new OffsetRoom(offset)
+  }
+}

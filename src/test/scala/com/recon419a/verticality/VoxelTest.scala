@@ -7,30 +7,47 @@ import org.scalatest.mockito.MockitoSugar
 import org.scalatest.{FlatSpec, Matchers}
 
 class VoxelTest extends FlatSpec with Matchers with MockitoSugar {
-  "offset" should "offset along the correct axes" in {
-    Voxel(Coordinate(1, 2, 3), DEFAULT_MATERIAL).translate(Coordinate(4, 5, 6)) shouldBe
-      Voxel(Coordinate(5, 7, 9), DEFAULT_MATERIAL)
+  "translate" should "offset along the correct axes" in {
+    Voxel(1, 2, 3).translate(4, 5, 6) shouldBe Voxel(5, 7, 9, DEFAULT_MATERIAL)
   }
 
   it should "work for negative values" in {
-    Voxel(Coordinate(1, 2, 3), DEFAULT_MATERIAL).translate(Coordinate(5, -3, 4)) shouldBe
-      Voxel(Coordinate(6, -1, 7), DEFAULT_MATERIAL)
+    Voxel(1, 2, 3).translate(5, -3, 4) shouldBe Voxel(6, -1, 7)
   }
 
   it should "work for non-default materials" in {
-    Voxel(Coordinate(1, 1, 1), SimpleBlock.BRICK_BLOCK).translate(Coordinate(1, 2, 3)) shouldBe
-      Voxel(Coordinate(2, 3, 4), SimpleBlock.BRICK_BLOCK)
+    Voxel(1, 1, 1, SimpleBlock.BRICK_BLOCK).translate(1, 2, 3) shouldBe Voxel(2, 3, 4, SimpleBlock.BRICK_BLOCK)
+  }
+
+  it should "infer zero for a missing z value" in {
+    Voxel(1, 2).translate(1, 2) shouldBe Voxel(2, 4)
   }
 
   "renderTo" should "call World.setBlock with the correct arguments" in {
     val mockWorld = mock[World]
-    Voxel(Coordinate(0, 1, -4), DEFAULT_MATERIAL).renderTo(mockWorld)
+    Voxel(0, 1, -4).renderTo(mockWorld)
     verify(mockWorld).setBlock(0, 1, -4, DEFAULT_MATERIAL)
   }
 
   it should "work for non-default materials" in {
     val mockWorld = mock[World]
-    Voxel(Coordinate(0, 1, -4), SimpleBlock.ACACIA_FENCE).renderTo(mockWorld)
+    Voxel(0, 1, -4, SimpleBlock.ACACIA_FENCE).renderTo(mockWorld)
     verify(mockWorld).setBlock(0, 1, -4, SimpleBlock.ACACIA_FENCE)
+  }
+
+  "apply" should "correctly construct a coordinate" in {
+    Voxel(1, 2, 3, DEFAULT_MATERIAL) shouldBe Voxel(Coordinate(1, 2, 3), DEFAULT_MATERIAL)
+  }
+
+  it should "default to the default material" in {
+    Voxel(1, 2, 3) shouldBe Voxel(1, 2, 3, DEFAULT_MATERIAL)
+  }
+
+  it should "default to zero for the z-axis when passed a blcok" in {
+    Voxel(1, 2, SimpleBlock.AIR) shouldBe Voxel(1, 2, 0, SimpleBlock.AIR)
+  }
+
+  it should "default to zero for z when passed no block" in {
+    Voxel(1, 2) shouldBe Voxel(1, 2, 0)
   }
 }

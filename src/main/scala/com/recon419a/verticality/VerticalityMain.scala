@@ -1,6 +1,6 @@
 package com.recon419a.verticality
 
-import com.recon419a.verticality.structures.{BasicRoom, FilledCuboid, MultiStoryRoom, OffsetRoom}
+import com.recon419a.verticality.structures._
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.level.{FlatGenerator, GameType, Level}
 import net.morbz.minecraft.world.{DefaultLayers, World}
@@ -9,9 +9,10 @@ object VerticalityMain extends App {
   val world = makeWorld
 
   // Make a floor for spawning on
-  FilledCuboid(Coordinate(100, 3, 100), Coordinate(-50, 0, -50)).renderTo(world)
+  CustomFilledCuboid(Coordinate(100, 0, 100), Coordinate(-50, 2, -50)).renderTo(world)
 
-  val test = MultiStoryRoom(Coordinate(0, 10, 0), 4)
+//  val test = MultiStoryRoom(Coordinate(0, 10, 0), 4)
+  val test = OffsetRoom(Coordinate(0, 10, 0))
   test.renderTo(world)
 
 

@@ -25,3 +25,9 @@ case class Coordinate(x: Int, y: Int, z: Int) {
       yield Coordinate(x, y, z)
   }.toList
 }
+
+object Coordinate {
+  def apply(x: Int, y: Int): Coordinate = {
+    Coordinate(x, y, 0)
+  }
+}

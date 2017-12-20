@@ -11,4 +11,3 @@ trait FilledCuboid extends Structure {
   }
 }
 
-case class CustomFilledCuboid(maxCoordinate: Coordinate, offset: Coordinate) extends FilledCuboid
