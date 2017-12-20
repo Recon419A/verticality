@@ -1,6 +1,7 @@
 package com.recon419a.verticality.structures.doors
 
-import com.recon419a.verticality.{Coordinate, Structure}
+import com.recon419a.verticality.structures.Structure
+import com.recon419a.verticality.util.Coordinate
 
 object CenteredDoor {
   def apply(maxCoordinate: Coordinate, structure: Structure): CustomDoor = {

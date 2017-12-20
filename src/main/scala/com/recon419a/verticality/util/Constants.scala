@@ -1,8 +1,8 @@
-package com.recon419a
+package com.recon419a.verticality.util
 
 import net.morbz.minecraft.blocks.SimpleBlock
 
-package object verticality {
+object Constants {
   val DEFAULT_MATERIAL = SimpleBlock.MOSSY_COBBLESTONE
   val ORIGIN = Coordinate(0, 0, 0)
 }

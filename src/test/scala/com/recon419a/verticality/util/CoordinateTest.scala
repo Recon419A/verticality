@@ -1,4 +1,4 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.util
 
 import org.scalatest.{FlatSpec, Matchers}
 

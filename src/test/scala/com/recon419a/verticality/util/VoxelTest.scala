@@ -1,5 +1,6 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.util
 
+import com.recon419a.verticality.util.Constants.DEFAULT_MATERIAL
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.world.World
 import org.mockito.Mockito._

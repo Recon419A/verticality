@@ -1,6 +1,7 @@
-package com.recon419a.verticality.structures
+package com.recon419a.verticality.structures.cuboids
 
-import com.recon419a.verticality.{Coordinate, ORIGIN}
+import com.recon419a.verticality.util.Coordinate
+import com.recon419a.verticality.util.Constants.ORIGIN
 
 class CustomFilledCuboid(val maxCoordinate: Coordinate, val offset: Coordinate) extends FilledCuboid
 

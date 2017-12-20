@@ -1,4 +1,6 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.structures
+
+import com.recon419a.verticality.util.{Coordinate, Voxel}
 
 trait MultiStructure extends Structure {
   val components: List[Structure]

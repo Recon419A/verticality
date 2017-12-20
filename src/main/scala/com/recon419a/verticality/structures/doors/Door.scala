@@ -1,6 +1,6 @@
 package com.recon419a.verticality.structures.doors
 
-import com.recon419a.verticality.structures.FilledCuboid
+import com.recon419a.verticality.structures.cuboids.FilledCuboid
 import net.morbz.minecraft.blocks.SimpleBlock
 
 trait Door extends FilledCuboid {

@@ -1,6 +1,6 @@
 package com.recon419a.verticality.structures.doors
 
-import com.recon419a.verticality.Coordinate
+import com.recon419a.verticality.util.Coordinate
 
 class CustomDoor(val maxCoordinate: Coordinate, val offset: Coordinate) extends Door
 

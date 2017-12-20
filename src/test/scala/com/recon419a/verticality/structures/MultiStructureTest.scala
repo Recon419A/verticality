@@ -1,6 +1,7 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.structures
 
-import com.recon419a.verticality.structures._
+import com.recon419a.verticality.structures.teststructures._
+import com.recon419a.verticality.util.{Coordinate, Voxel}
 import net.morbz.minecraft.blocks.SimpleBlock
 import org.scalatest.{FlatSpec, Matchers}
 

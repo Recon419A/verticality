@@ -1,6 +1,9 @@
-package com.recon419a.verticality.structures
+package com.recon419a.verticality.structures.cuboids
 
-import com.recon419a.verticality.{Coordinate, DEFAULT_MATERIAL, ORIGIN, Structure, Voxel}
+import com.recon419a.verticality._
+import com.recon419a.verticality.structures.Structure
+import com.recon419a.verticality.util.{Coordinate, Voxel}
+import com.recon419a.verticality.util.Constants.{ORIGIN, DEFAULT_MATERIAL}
 
 class HollowCuboid(val maxCoordinate: Coordinate, val offset: Coordinate) extends Structure {
   def voxel: Coordinate => Option[Voxel] = c => {
@@ -8,7 +11,7 @@ class HollowCuboid(val maxCoordinate: Coordinate, val offset: Coordinate) extend
     Produce a voxel if it's at the minimum or maximum of any dimension, and within the volume.
      */
     if (atMinMaxOfOneDimension(c) && (ORIGIN to maxCoordinate).contains(c)) {
-      Some(Voxel(c, DEFAULT_MATERIAL))
+      Some(util.Voxel(c, DEFAULT_MATERIAL))
     }
     else None
   }

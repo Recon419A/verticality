@@ -1,5 +1,7 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.structures
 
+import com.recon419a.verticality.util.{Coordinate, Voxel}
+import com.recon419a.verticality.util.Constants.ORIGIN
 import net.morbz.minecraft.world.World
 
 trait Structure {

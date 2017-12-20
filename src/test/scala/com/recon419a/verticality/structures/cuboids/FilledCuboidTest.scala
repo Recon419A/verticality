@@ -1,6 +1,7 @@
-package com.recon419a.verticality.structures
+package com.recon419a.verticality.structures.cuboids
 
-import com.recon419a.verticality.{Coordinate, DEFAULT_MATERIAL, ORIGIN, Voxel}
+import com.recon419a.verticality.util.{Coordinate, Voxel}
+import com.recon419a.verticality.util.Constants.{DEFAULT_MATERIAL, ORIGIN}
 import org.scalatest.{FlatSpec, Matchers}
 
 class FilledCuboidTest extends FlatSpec with Matchers {

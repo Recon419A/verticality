@@ -1,7 +1,7 @@
 package com.recon419a.verticality.structures
 
-import com.recon419a.verticality.{Coordinate, MultiStructure, Structure}
-import com.recon419a.verticality.ORIGIN
+import com.recon419a.verticality.util.Coordinate
+import com.recon419a.verticality.util.Constants.ORIGIN
 
 class OffsetRoom(val offset: Coordinate) extends MultiStructure {
   override val components: List[Structure] = List(BasicRoom(ORIGIN), BasicRoom(Coordinate(4, 0, 4)))

@@ -1,6 +1,6 @@
-package com.recon419a.verticality.structures
+package com.recon419a.verticality.structures.teststructures
 
-import com.recon419a.verticality.Coordinate
+import com.recon419a.verticality.util.Coordinate
 
 object TestOriginStructure extends TestStructure {
   /**

@@ -1,6 +1,8 @@
-package com.recon419a.verticality.structures
+package com.recon419a.verticality.structures.teststructures
 
-import com.recon419a.verticality._
+import com.recon419a.verticality.util.Constants.ORIGIN
+import com.recon419a.verticality.structures.{MultiStructure, Structure}
+import com.recon419a.verticality.util.Coordinate
 
 object TestMultiComponentMultiStructure extends MultiStructure {
   override val components: List[Structure] = List(TestOriginStructure, TestOffsetStructure)

@@ -1,4 +1,4 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.util
 
 case class Coordinate(x: Int, y: Int, z: Int) {
   def +(c: Coordinate): Coordinate = {

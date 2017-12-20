@@ -1,7 +1,8 @@
 package com.recon419a.verticality
 
 import com.recon419a.verticality.structures._
-import net.morbz.minecraft.blocks.SimpleBlock
+import com.recon419a.verticality.structures.cuboids.CustomFilledCuboid
+import com.recon419a.verticality.util.Coordinate
 import net.morbz.minecraft.level.{FlatGenerator, GameType, Level}
 import net.morbz.minecraft.world.{DefaultLayers, World}
 

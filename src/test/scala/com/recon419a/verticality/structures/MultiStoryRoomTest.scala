@@ -1,7 +1,8 @@
 package com.recon419a.verticality.structures
 
+import com.recon419a.verticality.util.{Coordinate, Voxel}
+import com.recon419a.verticality.util.Constants.{ORIGIN, DEFAULT_MATERIAL}
 import org.scalatest.{FlatSpec, Matchers}
-import com.recon419a.verticality.{Coordinate, DEFAULT_MATERIAL, ORIGIN, Voxel}
 
 class MultiStoryRoomTest extends FlatSpec with Matchers {
   "a room of height 1" should "be 5 tall" in {

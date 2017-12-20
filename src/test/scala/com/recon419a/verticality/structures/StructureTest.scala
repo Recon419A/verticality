@@ -1,13 +1,12 @@
-package com.recon419a.verticality
+package com.recon419a.verticality.structures
 
-
-import com.recon419a.verticality.structures.TestOffsetStructure
+import com.recon419a.verticality.structures.teststructures.TestOffsetStructure
+import com.recon419a.verticality.util.{Coordinate, Voxel}
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.world.World
-import org.scalatest.FlatSpec
-import org.scalatest.Matchers
-import org.scalatest.mockito.MockitoSugar
 import org.mockito.Mockito._
+import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.mockito.MockitoSugar
 
 
 class StructureTest extends FlatSpec with Matchers with MockitoSugar {

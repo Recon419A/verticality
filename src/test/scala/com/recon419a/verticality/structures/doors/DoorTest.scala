@@ -1,7 +1,7 @@
-package com.recon419a.verticality.structures
+package com.recon419a.verticality.structures.doors
 
-import com.recon419a.verticality.structures.doors.CenteredDoor
-import com.recon419a.verticality.{Coordinate, ORIGIN, Voxel}
+import com.recon419a.verticality.structures.cuboids.CustomFilledCuboid
+import com.recon419a.verticality.util.{Coordinate, Voxel}
 import net.morbz.minecraft.blocks.SimpleBlock
 import org.scalatest.{FlatSpec, Matchers}
 
