@@ -51,4 +51,12 @@ class CoordinateTest extends FlatSpec with Matchers {
       Coordinate(0, 1, 0), Coordinate(0, 1, 1), Coordinate(1, 0, 0), Coordinate(1, 0, 1), Coordinate(1, 1, 0),
       Coordinate(1, 1, 1))
   }
+
+  "apply" should "default to zero for z" in {
+    Coordinate(1, 2) shouldBe Coordinate(1, 2, 0)
+  }
+
+  it should "correctly parse from a size" in {
+    Coordinate(Size(1, 2, 3)) shouldBe Coordinate(0, 1, 2)
+  }
 }

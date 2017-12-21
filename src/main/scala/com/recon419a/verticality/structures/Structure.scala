@@ -8,6 +8,10 @@ case class Structure(voxels: Set[Voxel]) {
     Structure(voxels.map(v => v + coordinate))
   }
 
+  def +(other: Structure): Structure = {
+    Structure((this - other).voxels ++ other.voxels)
+  }
+
   def -(other: Structure): Structure = {
     Structure(voxels.filterNot(voxel => other.voxels.map(_.coordinate) contains voxel.coordinate))
   }

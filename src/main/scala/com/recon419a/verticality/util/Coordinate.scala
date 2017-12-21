@@ -1,6 +1,6 @@
 package com.recon419a.verticality.util
 
-case class Coordinate(x: Int, y: Int, z: Int) {
+case class Coordinate(x: Int, y: Int, z: Int = 0) {
   def +(c: Coordinate): Coordinate = {
     Coordinate(x + c.x, y + c.y, z + c.z)
   }
@@ -27,7 +27,7 @@ case class Coordinate(x: Int, y: Int, z: Int) {
 }
 
 object Coordinate {
-  def apply(x: Int, y: Int): Coordinate = {
-    Coordinate(x, y, 0)
+  def apply(size: Size): Coordinate = {
+    Coordinate(size.width - 1, size.height - 1, size.depth - 1)
   }
 }
