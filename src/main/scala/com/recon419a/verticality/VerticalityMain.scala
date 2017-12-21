@@ -1,7 +1,7 @@
 package com.recon419a.verticality
 
 import com.recon419a.verticality.structures.{Cuboid, Grid, Hallway}
-import com.recon419a.verticality.util.Coordinate
+import com.recon419a.verticality.util.{Coordinate, Size}
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.level.{FlatGenerator, GameType, Level}
 import net.morbz.minecraft.world.{DefaultLayers, World}
@@ -11,12 +11,12 @@ object VerticalityMain extends App {
 
   makeFloor()
 
-  (Hallway(5, 5, 8) + Coordinate(0, 10)).renderTo(world)
-  (Grid(5, 5, 8, Coordinate(2, 2, 2), SimpleBlock.GLOWSTONE) + Coordinate(0, 10)).renderTo(world)
+  (Hallway(Size(5, 5, 8)) + Coordinate(0, 10)).renderTo(world)
+  (Grid(Size(5, 5, 8), Coordinate(2, 2, 2), SimpleBlock.GLOWSTONE) + Coordinate(0, 10)).renderTo(world)
 
 
   private def makeFloor(): Unit = {
-    (Cuboid(50, 1, 50) + Coordinate(-25, 0, -25)).renderTo(world)
+    (Cuboid(Size(50, 1, 50)) + Coordinate(-25, 0, -25)).renderTo(world)
   }
 
   private def makeWorld = {

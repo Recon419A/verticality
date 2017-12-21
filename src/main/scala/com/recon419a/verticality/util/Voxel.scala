@@ -4,7 +4,7 @@ import com.recon419a.verticality.util.Constants.DEFAULT_MATERIAL
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.world.World
 
-case class Voxel(coordinate: Coordinate, block: SimpleBlock) {
+case class Voxel(coordinate: Coordinate, block: SimpleBlock = DEFAULT_MATERIAL) {
   def renderTo(world: World): Unit = {
     world.setBlock(coordinate.x, coordinate.y, coordinate.z, block)
   }
@@ -20,14 +20,14 @@ object Voxel {
   }
 
   def apply(x: Int, y: Int, block: SimpleBlock): Voxel = {
-    apply(x, y, 0, block)
+    Voxel(Coordinate(x, y), block)
   }
 
   def apply(x: Int, y: Int, z: Int): Voxel = {
-    apply(x, y, z, DEFAULT_MATERIAL)
+    Voxel(Coordinate(x, y, z))
   }
 
   def apply(x: Int, y: Int): Voxel = {
-    apply(x, y, 0)
+    Voxel(Coordinate(x, y))
   }
 }
