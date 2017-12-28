@@ -23,37 +23,37 @@ class CoordinateTest extends FlatSpec with Matchers {
     Coordinate(2, 4, -8) / 3 shouldBe Coordinate(0, 1, -2)
   }
 
-  "<=" should "return true for a coordinate equal in all dimensions" in {
-    Coordinate(1, 2, 3) <= Coordinate(1, 2, 3) shouldBe true
+  "<<=" should "return true for a coordinate equal in all dimensions" in {
+    (Coordinate(1, 2, 3) <<= Coordinate(1, 2, 3)) shouldBe true
   }
 
   it should "fail if any one dimension is higher" in {
-    Coordinate(0, 0, 1) <= Coordinate(0, 0, 0) shouldBe false
-    Coordinate(0, 1, 0) <= Coordinate(0, 0, 0) shouldBe false
-    Coordinate(1, 0, 0) <= Coordinate(0, 0, 0) shouldBe false
+    (Coordinate(0, 0, 1) <<= Coordinate(0, 0)) shouldBe false
+    (Coordinate(0, 1) <<= Coordinate(0, 0)) shouldBe false
+    (Coordinate(1, 0) <<= Coordinate(0, 0)) shouldBe false
   }
 
   it should "fail if two dimensions are significantly lower and the third is higher" in {
-    Coordinate(0, 0, 1) <= Coordinate(100, 100, 0) shouldBe false
+    (Coordinate(0, 0, 1) <<= Coordinate(100, 100)) shouldBe false
   }
 
   "to" should "produce an inclusive range along a single axis" in {
-    Coordinate(0, 0, 0) to Coordinate(0, 0, 1) shouldBe List(Coordinate(0, 0, 0), Coordinate(0, 0, 1))
+    Coordinate(0, 0) to Coordinate(0, 0, 1) shouldBe List(Coordinate(0, 0), Coordinate(0, 0, 1))
   }
 
   it should "produce an inclusive range along two axes" in {
-    Coordinate(0, 0, 0) to Coordinate(0, 1, 1) shouldBe List(Coordinate(0, 0, 0), Coordinate(0, 0, 1),
-      Coordinate(0, 1, 0), Coordinate(0, 1, 1))
+    Coordinate(0, 0) to Coordinate(0, 1, 1) shouldBe List(Coordinate(0, 0), Coordinate(0, 0, 1),
+      Coordinate(0, 1), Coordinate(0, 1, 1))
   }
 
   it should "produce an inclusive range along three axes" in {
-    Coordinate(0, 0, 0) to Coordinate(1, 1, 1) shouldBe List(Coordinate(0, 0, 0), Coordinate(0, 0, 1),
-      Coordinate(0, 1, 0), Coordinate(0, 1, 1), Coordinate(1, 0, 0), Coordinate(1, 0, 1), Coordinate(1, 1, 0),
+    Coordinate(0, 0) to Coordinate(1, 1, 1) shouldBe List(Coordinate(0, 0), Coordinate(0, 0, 1),
+      Coordinate(0, 1), Coordinate(0, 1, 1), Coordinate(1, 0), Coordinate(1, 0, 1), Coordinate(1, 1),
       Coordinate(1, 1, 1))
   }
 
   "apply" should "default to zero for z" in {
-    Coordinate(1, 2) shouldBe Coordinate(1, 2, 0)
+    Coordinate(1, 2) shouldBe Coordinate(1, 2)
   }
 
   it should "correctly parse from a size" in {
