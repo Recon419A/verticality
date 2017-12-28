@@ -13,6 +13,7 @@ case class Structure(voxels: Set[Voxel]) {
     Structure((this - other).voxels ++ other.voxels)
   }
 
+
   private def rotateCounterClockwise = {
     Structure(voxels.map(v => {
       val x = v.coordinate.z
