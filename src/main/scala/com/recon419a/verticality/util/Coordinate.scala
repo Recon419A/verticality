@@ -1,22 +1,21 @@
 package com.recon419a.verticality.util
 
 case class Coordinate(x: Int, y: Int, z: Int = 0) {
-  def +(c: Coordinate): Coordinate = {
-    Coordinate(x + c.x, y + c.y, z + c.z)
+  def +(that: Coordinate): Coordinate = {
+    Coordinate(x + that.x, y + that.y, z + that.z)
   }
 
-  def -(c: Coordinate): Coordinate = {
-    Coordinate(x - c.x, y - c.y, z - c.z)
+  def -(that: Coordinate): Coordinate = {
+    Coordinate(x - that.x, y - that.y, z - that.z)
   }
 
-  def /(i: Int): Coordinate = {
-    Coordinate(x / i, y / i, z / i)
+  def /(that: Int): Coordinate = {
+    Coordinate(x / that, y / that, z / that)
   }
 
-  def <=(c: Coordinate): Boolean = {
-    x <= c.x && y <= c.y && z <= c.z
+  def <<=(that: Coordinate): Boolean = {
+    x <= that.x && y <= that.y && z <= that.z
   }
-
 
   def to(end: Coordinate): List[Coordinate] = {
     for (x <- x to end.x;
