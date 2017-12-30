@@ -22,12 +22,4 @@ object Size {
   def apply(coordinate: Coordinate): Size = {
     Size(coordinate.x + 1, coordinate.y + 1, coordinate.z + 1)
   }
-
-  def apply(gridSize: GridSize): Size = {
-    Size(
-      GRID_SIZE.width * gridSize.width,
-      GRID_SIZE.height * gridSize.height,
-      GRID_SIZE.depth * gridSize.depth
-    ) + Size(1, 1)
-  }
 }

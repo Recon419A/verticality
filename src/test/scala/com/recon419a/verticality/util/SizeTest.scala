@@ -23,22 +23,6 @@ class SizeTest extends FlatSpec with Matchers {
     Size(2, 3) shouldBe Size(2, 3, 1)
   }
 
-  it should "return 11 for a room of GridSize 1" in {
-    Size(GridSize(1, 1)) shouldBe Size(11, 11, 5)
-  }
-
-  it should "return the correct size for a 2x1 grid" in {
-    Size(GridSize(2, 1)) shouldBe Size(21, 11, 5)
-  }
-
-  it should "return the correct size for a 2x2 grid" in {
-    Size(GridSize(2, 2)) shouldBe Size(21, 21, 5)
-  }
-
-  it should "return the correct size for a 2x2x3 grid" in {
-    Size(GridSize(2, 2, 3)) shouldBe Size(21, 21, 13)
-  }
-
   ">>=" should "return true for a size larger in all three dimensions" in {
     (Size(4, 4, 4) >>= Size(3, 3, 3)) shouldBe true
   }

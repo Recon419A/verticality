@@ -1,9 +1,7 @@
 package com.recon419a.verticality.util
 
-import com.recon419a.verticality.util.Constants.GRID_SIZE
-
-case class GridCoordinate(x: Int, y: Int, z: Int)
-
 object GridCoordinate {
-
+  def apply(x: Int, y: Int, z: Int = 0): Coordinate = {
+    Coordinate(x * GRID_SIZE.width, y * GRID_SIZE.height, z * GRID_SIZE.depth)
+  }
 }
