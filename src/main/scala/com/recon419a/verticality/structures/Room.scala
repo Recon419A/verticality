@@ -5,8 +5,9 @@ import com.recon419a.verticality.util.Constants.DEFAULT_MATERIAL
 import net.morbz.minecraft.blocks.SimpleBlock
 
 object Room {
-  def apply(size: Size, block: SimpleBlock = DEFAULT_MATERIAL): Structure = {
-    assert(size >>= Size(3, 3, 3))
-    Cuboid(size, block) - (Cuboid(size - Size(2, 2, 2)) + Coordinate(1, 1, 1))
+  def apply(stories: Int = 1): Structure = {
+    val size = Size(11, 4 * stories + 1, 11)
+    val hollowCenter = Cuboid(size - Size(2, 2, 2), SimpleBlock.AIR) + Coordinate(1, 1, 1)
+    Cuboid(size) + hollowCenter
   }
 }
