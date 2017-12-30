@@ -13,12 +13,20 @@ case class Structure(voxels: Set[Voxel]) {
   }
 
 
-  private def rotateCounterClockwise = {
+  def rotateCounterClockwise: Structure = {
     Structure(voxels.map(v => {
       val x = v.coordinate.z
-      val z = maxCoordinate.x - v.coordinate.x
+      val z = 10 - v.coordinate.x
       v.copy(coordinate = Coordinate(x, v.coordinate.y, z))
     }))
+  }
+
+  def rotateFlip: Structure = {
+    rotateCounterClockwise.rotateCounterClockwise
+  }
+
+  def rotateClockwise: Structure = {
+    rotateFlip.rotateCounterClockwise
   }
 
   def -(other: Structure): Structure = {
