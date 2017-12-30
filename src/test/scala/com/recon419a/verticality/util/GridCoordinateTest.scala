@@ -12,6 +12,6 @@ class GridCoordinateTest extends FlatSpec with Matchers {
   }
 
   it should "return the correct offset for the coordinate (1, 2, 3)" in {
-    GridCoordinate(1, 2, 3) shouldBe Coordinate(10, 20, 12)
+    GridCoordinate(1, 2, 3) shouldBe Coordinate(10, 8, 30)
   }
 }
