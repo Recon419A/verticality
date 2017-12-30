@@ -1,7 +1,6 @@
 package com.recon419a.verticality.structures
 
-import com.recon419a.verticality.util.{Coordinate, Size, Voxel}
-import com.recon419a.verticality.util.Constants.DEFAULT_MATERIAL
+import com.recon419a.verticality.util.{Coordinate, Size}
 import net.morbz.minecraft.blocks.SimpleBlock
 
 object Hallway {

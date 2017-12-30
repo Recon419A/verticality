@@ -1,7 +1,6 @@
 package com.recon419a.verticality.structures
 
-import com.recon419a.verticality.util.Rotation.Rotation
-import com.recon419a.verticality.util.{Coordinate, Rotation, Voxel}
+import com.recon419a.verticality.util.{Coordinate, Voxel}
 import net.morbz.minecraft.world.World
 
 case class Structure(voxels: Set[Voxel]) {

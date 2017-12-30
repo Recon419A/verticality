@@ -15,6 +15,7 @@ object VerticalityMain extends App {
 //  (Grid(Size(5, 5, 8), Coordinate(2, 2, 2), SimpleBlock.GLOWSTONE) + Coordinate(0, 10)).renderTo(world)
 //  (Igloo(Size(9, 8, 9), Size(5, 5, 8)) + Coordinate(0, 20)).renderTo(world)
 
+  (Igloo() + Coordinate(0, 20, 0)).renderTo(world)
   (Atrium() + Coordinate(0, 10, 0)).renderTo(world)
 
   private def makeFloor(): Unit = {
