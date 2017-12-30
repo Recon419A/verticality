@@ -12,6 +12,9 @@ case class Structure(voxels: Set[Voxel]) {
     Structure((this - other).voxels ++ other.voxels)
   }
 
+  def ++(that: Iterable[Structure]) = {
+    that.foldLeft(this)((s1: Structure, s2: Structure) => s1 + s2)
+  }
 
   def rotateCounterClockwise: Structure = {
     Structure(voxels.map(v => {

@@ -11,7 +11,7 @@ object OpenAtrium {
     val south = potentialRandomStructure(Hallway() + GridCoordinate(0, 0, 1))
     val west = potentialRandomStructure(Hallway().rotateClockwise + GridCoordinate(-1, 0))
     val wings = List(north, east, south, west).flatten
-    wings.foldLeft(Room())((s1: Structure, s2: Structure) => s1 + s2)
+    Room() ++ wings
   }
 
   private def potentialRandomStructure(westFacingHallway: Structure): Option[Structure] = {
