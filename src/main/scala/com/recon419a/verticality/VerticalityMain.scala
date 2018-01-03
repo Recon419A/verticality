@@ -19,7 +19,7 @@ object VerticalityMain extends App {
 //  (OpenAtrium() + Coordinate(0, 20)).renderTo(world)
 
 //  (Dungeon() + Coordinate(0, 10)).renderTo(world)
-  (MultiStoryClosedAtrium() + Coordinate(0, 10)).renderTo(world)
+//  (MultiStoryClosedAtrium() + Coordinate(0, 10)).renderTo(world)
 //  ((Room() + FloorDeleter()) + Coordinate(0, 10)).renderTo(world)
 
   private def makeFloor(): Unit = {
