@@ -62,8 +62,20 @@ class StructureTest extends FlatSpec with Matchers with MockitoSugar {
     testCuboid.rotateCounterClockwise shouldBe Cuboid(Size(1, 1)) + Coordinate(1, 0, 9)
   }
 
+  "rotateFlip" should "invert itself" in {
+    testCuboid1.rotateFlip.rotateFlip shouldBe testCuboid1
+  }
+
   "rotateClockwise" should "invert rotateCounterClockwise" in {
     testCuboid1.rotateCounterClockwise.rotateClockwise shouldBe testCuboid1
+  }
+
+  "maxCoordinate" should "work for a simple cuboid" in {
+    Cuboid(Size(1, 2, 3)).maxCoordinate shouldBe Coordinate(Size(1, 2, 3))
+  }
+
+  it should "take the highest dimensions for a non-cuboid structure" in {
+    (Cuboid(Size(10, 1)) + Cuboid(Size(1, 10))).maxCoordinate shouldBe Coordinate(9, 9)
   }
 
   "renderTo" should "call setBlock with the correct arguments" in {
