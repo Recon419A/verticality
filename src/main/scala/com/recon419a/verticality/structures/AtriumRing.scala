@@ -6,9 +6,11 @@ object AtriumRing {
   def apply(radius: Int): IndexedSeq[Structure] = {
     val grid = for (x <- -4 * radius to 4 * radius;
                     z <- -4 * radius to 4 * radius)
-      yield GridCoordinate(x, 0, z)
-    val openAtriums = grid.filter(isOpenAtriumLocation(_, radius)).map(OpenAtrium() + _)
-    val closedAtriums = grid.filter(isClosedAtriumLocation(_, radius)).map(ClosedAtrium() + _)
+      yield Coordinate(x, 0, z)
+    val openAtriums = grid.filter(isOpenAtriumLocation(_, radius)).map(c =>
+      OpenAtrium() + GridCoordinate(c.x, c.y, c.z))
+    val closedAtriums = grid.filter(isClosedAtriumLocation(_, radius)).map(c =>
+      ClosedAtrium() + GridCoordinate(c.x, c.y, c.z))
     closedAtriums ++ openAtriums
   }
 

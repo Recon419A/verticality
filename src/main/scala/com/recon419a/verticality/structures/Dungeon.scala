@@ -2,6 +2,6 @@ package com.recon419a.verticality.structures
 
 object Dungeon {
   def apply(): Structure = {
-    ClosedAtrium() ++ AtriumRing(1) ++ AtriumRing(2)
+    ClosedAtrium() ++ AtriumRing(2) ++ AtriumRing(1)
   }
 }
