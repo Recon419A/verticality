@@ -24,10 +24,6 @@ class MultiStoryAtriumTest extends FlatSpec with Matchers {
     (TestMultiStoryAtrium(wingFlags) - Cuboid(GridSize(1, 2))).voxels.head shouldBe Voxel(10, 4, -1)
   }
 
-  it should "create a room with no floor in the middle" in {
-    TestMultiStoryAtrium(2).voxels should contain noneOf(Voxel(4, 4, 4), Voxel(5, 4, 7))
-  }
-
   it should "create an atrium given a single floor" in {
     val wingFlags = Seq(true, false, false, true)
     TestMultiStoryAtrium(Seq(wingFlags)) shouldBe TestAtrium(wingFlags)
