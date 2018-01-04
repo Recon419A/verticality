@@ -59,4 +59,22 @@ class AtriumTest extends FlatSpec with Matchers {
     TestAtrium(Seq(true, true, false, false)) shouldBe (
       Room() ++ TestAtrium.actualWings(Seq(true, true, false, false)))
   }
+
+  it should "generate a null structure in the null case" in {
+    NullAtrium() shouldBe Structure()
+  }
+
+  it should "generate only wings if there is no center structure" in {
+    WingsOnlyAtrium(Seq.fill(4)(true)).voxels.size shouldBe 8
+  }
+
+  object NullAtrium extends Atrium {
+    override val wingStructure: Structure = Structure()
+    override val centerStructure: Structure = Structure()
+  }
+
+  object WingsOnlyAtrium extends Atrium {
+    override val wingStructure: Structure = testWing
+    override val centerStructure: Structure = Structure()
+  }
 }
