@@ -2,7 +2,6 @@ package com.recon419a.verticality
 
 import com.recon419a.verticality.structures._
 import com.recon419a.verticality.util.{Coordinate, Size}
-import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.level.{FlatGenerator, GameType, Level}
 import net.morbz.minecraft.world.{DefaultLayers, World}
 
@@ -19,7 +18,7 @@ object VerticalityMain extends App {
 //  (OpenAtrium() + Coordinate(0, 20)).renderTo(world)
 
 //  (Dungeon() + Coordinate(0, 10)).renderTo(world)
-  (MultiStoryClosedAtrium() + Coordinate(0, 10)).renderTo(world)
+  //  (MultiStoryClosedAtrium() + Coordinate(0, 10)).renderTo(world)
 //  ((Room() + FloorDeleter()) + Coordinate(0, 10)).renderTo(world)
 
   private def makeFloor(): Unit = {
