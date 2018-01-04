@@ -5,23 +5,26 @@ import net.morbz.minecraft.blocks.SimpleBlock
 import org.scalatest.{FlatSpec, Matchers}
 
 class MultiStoryClosedAtriumTest extends FlatSpec with Matchers {
+  val testFullWingClosedAtrium = TestFullWingClosedAtrium()
+
   "atrium" should "be a closed atrium" in {
     MultiStoryClosedAtrium.atrium shouldBe ClosedAtrium
   }
 
-  "apply" should "create a room with maximum GridCoordinate (3, 2, 3) for all true flags" in {
-    val wingFlags: Seq[Seq[Boolean]] = Seq.fill(2)(Seq.fill(4)(true))
-    MultiStoryClosedAtrium(wingFlags).maxCoordinate shouldBe GridCoordinate(3, 2, 3)
-  }
-
-  it should "create a room with minimum GridCoordinate (-2, 0, -2) for all true flags" in {
-    val wingFlags: Seq[Seq[Boolean]] = Seq.fill(2)(Seq.fill(4)(true))
-    MultiStoryClosedAtrium(wingFlags).minCoordinate shouldBe GridCoordinate(-2, 0, -2)
+  "apply" should "create a room between (-2, 0, -2) and (3, 2, 3) for all true flags" in {
+    testFullWingClosedAtrium.maxCoordinate shouldBe GridCoordinate(3, 2, 3)
+    testFullWingClosedAtrium.minCoordinate shouldBe GridCoordinate(-2, 0, -2)
   }
 
   it should "create a room with lighting in lower hallways" in {
-    val wingFlags: Seq[Seq[Boolean]] = Seq.fill(2)(Seq.fill(4)(true))
-    MultiStoryClosedAtrium(wingFlags).voxels
+    testFullWingClosedAtrium.voxels
       .filter(_.coordinate.y == 4).filter(_.block == SimpleBlock.GLOWSTONE) should not be Set.empty[Voxel]
+  }
+
+  object TestFullWingClosedAtrium {
+    def apply(): Structure = {
+      val wingFlags: Seq[Seq[Boolean]] = Seq.fill(2)(Seq.fill(4)(true))
+      MultiStoryClosedAtrium(wingFlags)
+    }
   }
 }
