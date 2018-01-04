@@ -18,4 +18,8 @@ class GridSizeTest extends FlatSpec with Matchers {
   it should "return the correct size for a 2x2x3 grid" in {
     GridSize(2, 2, 3) shouldBe Size(21, 9, 31)
   }
+
+  it should "throw an error for a height of zero" in {
+    an[IllegalArgumentException] should be thrownBy (GridSize(1, 0) shouldBe Size(11, 1, 11))
+  }
 }
