@@ -1,11 +1,9 @@
 package com.recon419a.verticality.structures
 
-import com.recon419a.verticality.util.{GridCoordinate, Size}
+import com.recon419a.verticality.util.GridCoordinate
 import org.scalatest.{FlatSpec, Matchers}
 
 class AtriumTest extends FlatSpec with Matchers {
-  private val testWing = Cuboid(Size(1, 1, 2))
-
   "actualWings" should "contain no wings when passed all false" in {
     TestAtrium.actualWings(Seq(false, false, false, false)) shouldBe List.empty[Structure]
   }
@@ -61,9 +59,4 @@ class AtriumTest extends FlatSpec with Matchers {
     TestAtrium(Seq(true, true, false, false)) shouldBe (
       Room() ++ TestAtrium.actualWings(Seq(true, true, false, false)))
   }
-
-  object TestAtrium extends Atrium {
-    val structure: Structure = testWing
-  }
-
 }
