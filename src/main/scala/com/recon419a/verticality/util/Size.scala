@@ -1,6 +1,10 @@
 package com.recon419a.verticality.util
 
 case class Size(width: Int, height: Int, depth: Int = 1) {
+  if (width <= 0 || height <= 0 || depth <= 0) {
+    throw new IllegalArgumentException()
+  }
+
   def >>=(other: Size): Boolean = {
     width >= other.width && height >= other.height && depth >= other.depth
   }

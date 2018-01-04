@@ -4,7 +4,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class SizeTest extends FlatSpec with Matchers {
   "-" should "work for the basic case" in {
-    Size(1, 2, 3) - Size(4, 5, 6) shouldBe Size(-3, -3, -3)
+    Size(4, 5, 6) - Size(3, 1, 3) shouldBe Size(1, 4, 3)
   }
 
   "*" should "work for the basic case" in {
@@ -21,6 +21,14 @@ class SizeTest extends FlatSpec with Matchers {
 
   it should "use one for the default depth" in {
     Size(2, 3) shouldBe Size(2, 3, 1)
+  }
+
+  it should "throw an exception on negative size values" in {
+    an[IllegalArgumentException] shouldBe thrownBy(Size(-1, -2))
+  }
+
+  it should "throw an exception on zero size values" in {
+    an[IllegalArgumentException] shouldBe thrownBy(Size(0, 2))
   }
 
   ">>=" should "return true for a size larger in all three dimensions" in {

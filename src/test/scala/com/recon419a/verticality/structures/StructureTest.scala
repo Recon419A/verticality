@@ -1,7 +1,7 @@
 package com.recon419a.verticality.structures
 
-import com.recon419a.verticality.util.{Coordinate, Size, Voxel}
 import com.recon419a.verticality.util.Constants.DEFAULT_MATERIAL
+import com.recon419a.verticality.util.{Coordinate, GridCoordinate, Size, Voxel}
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.world.World
 import org.mockito.Mockito.verify
@@ -76,6 +76,39 @@ class StructureTest extends FlatSpec with Matchers with MockitoSugar {
 
   it should "take the highest dimensions for a non-cuboid structure" in {
     (Cuboid(Size(10, 1)) + Cuboid(Size(1, 10))).maxCoordinate shouldBe Coordinate(9, 9)
+  }
+
+  it should "work for a positively translated cuboid" in {
+    (testCuboid1 + Coordinate(1, 2, 3)).maxCoordinate shouldBe Coordinate(2, 2, 3)
+  }
+
+  it should "work for a negatively translated single voxel" in {
+    (Cuboid(Size(1, 1)) + Coordinate(-1, -2, -3)).maxCoordinate shouldBe Coordinate(-1, -2, -3)
+  }
+
+  it should "work for a negatively translated cuboid" in {
+    (testCuboid1 + Coordinate(-1, -2, -3)).maxCoordinate shouldBe Coordinate(-1, -2, -3) + Coordinate(Size(2, 1))
+  }
+
+  "minCoordinate" should "be (0, 0, 0) for an un-translated cuboid" in {
+    testCuboid1.minCoordinate shouldBe Coordinate(0, 0)
+  }
+
+  it should "be the translation for a negatively translated cuboid" in {
+    (testCuboid1 + Coordinate(-5, -7, -8)).minCoordinate shouldBe Coordinate(-5, -7, -8)
+  }
+
+  it should "be the translation for a positively translated cuboid" in {
+    (testCuboid1 + Coordinate(5, 8, 13)).minCoordinate shouldBe Coordinate(5, 8, 13)
+  }
+
+  it should "be the translation for a cuboid of mixed positives and negatives" in {
+    (testCuboid1 + Coordinate(5, -3, 17)).minCoordinate shouldBe Coordinate(5, -3, 17)
+  }
+
+  it should "be the minimum of a bounding box for a rotated L-shape" in {
+    ((testCuboid1 + GridCoordinate(-1, 0)) + (testCuboid1 + GridCoordinate(0, -1)))
+      .minCoordinate shouldBe GridCoordinate(-1, -1)
   }
 
   "renderTo" should "call setBlock with the correct arguments" in {

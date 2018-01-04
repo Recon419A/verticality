@@ -43,6 +43,13 @@ case class Structure(voxels: Set[Voxel]) {
     Coordinate(xMax, yMax, zMax)
   }
 
+  def minCoordinate: Coordinate = {
+    val xMin = voxels.map(_.coordinate.x).min
+    val yMin = voxels.map(_.coordinate.y).min
+    val zMin = voxels.map(_.coordinate.z).min
+    Coordinate(xMin, yMin, zMin)
+  }
+
   def voxel(coordinate: Coordinate): Option[Voxel] = {
     voxels.find(_.coordinate == coordinate)
   }
