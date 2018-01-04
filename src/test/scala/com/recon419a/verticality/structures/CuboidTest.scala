@@ -1,7 +1,6 @@
 package com.recon419a.verticality.structures
 
-import com.recon419a.verticality.util.{Coordinate, Size, Voxel}
-import com.recon419a.verticality.util.Constants.DEFAULT_MATERIAL
+import com.recon419a.verticality.util.{Size, Voxel}
 import net.morbz.minecraft.blocks.SimpleBlock
 import org.scalatest.{FlatSpec, Matchers}
 
@@ -21,10 +20,10 @@ class CuboidTest extends FlatSpec with Matchers {
   }
 
   it should "use the default material if one is not provided" in {
-    Cuboid(Size(1, 1)).voxels shouldBe Set(Voxel(0, 0, DEFAULT_MATERIAL))
+    Cuboid(Size(1, 1)).voxels shouldBe Set(Voxel(0, 0, DEFAULT_BLOCK))
   }
 
-  it should "work for non-default materials with x and y arguments" in {
+  it should "work for non-default materials with a size argument" in {
     Cuboid(Size(1, 1), SimpleBlock.ACACIA_FENCE).voxels shouldBe Set(Voxel(0, 0, SimpleBlock.ACACIA_FENCE))
   }
 }

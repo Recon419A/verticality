@@ -1,11 +1,10 @@
 package com.recon419a.verticality
 
+import com.recon419a.verticality.util.{Coordinate, Size}
 import net.morbz.minecraft.blocks.SimpleBlock
 
-package object util {
-
+package object structures {
   val DEFAULT_BLOCK: SimpleBlock = com.recon419a.verticality.DEFAULT_BLOCK
-  val ROOM_SIZE = Size(11, 5, 11)
-  val GRID_SIZE = Size(10, 4, 10)
-  val ROOM_INTERNAL_SIZE: Size =  Size(9, 3, 9)
+  val ORIGIN = Coordinate(0, 0)
+  val testWing = Cuboid(Size(1, 1, 2))
 }

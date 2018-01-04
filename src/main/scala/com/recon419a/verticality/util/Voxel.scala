@@ -1,10 +1,9 @@
 package com.recon419a.verticality.util
 
-import com.recon419a.verticality.util.Constants.DEFAULT_MATERIAL
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.world.World
 
-case class Voxel(coordinate: Coordinate, block: SimpleBlock = DEFAULT_MATERIAL) {
+case class Voxel(coordinate: Coordinate, block: SimpleBlock = DEFAULT_BLOCK) {
   def renderTo(world: World): Unit = {
     world.setBlock(coordinate.x, coordinate.y, coordinate.z, block)
   }

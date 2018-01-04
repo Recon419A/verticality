@@ -1,6 +1,5 @@
 package com.recon419a.verticality.structures
 
-import com.recon419a.verticality.util.Constants.DEFAULT_MATERIAL
 import com.recon419a.verticality.util.{Coordinate, GridCoordinate, Size, Voxel}
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.world.World
@@ -114,7 +113,7 @@ class StructureTest extends FlatSpec with Matchers with MockitoSugar {
   "renderTo" should "call setBlock with the correct arguments" in {
     val mockWorld = mock[World]
     Structure(Set(Voxel(0, 1, 2), Voxel(3, 4, 8, SimpleBlock.ACACIA_FENCE))).renderTo(mockWorld)
-    verify(mockWorld).setBlock(0, 1, 2, DEFAULT_MATERIAL)
+    verify(mockWorld).setBlock(0, 1, 2, DEFAULT_BLOCK)
     verify(mockWorld).setBlock(3, 4, 8, SimpleBlock.ACACIA_FENCE)
   }
 }

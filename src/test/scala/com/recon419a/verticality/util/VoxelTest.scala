@@ -1,6 +1,5 @@
 package com.recon419a.verticality.util
 
-import com.recon419a.verticality.util.Constants.DEFAULT_MATERIAL
 import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.world.World
 import org.mockito.Mockito._
@@ -9,7 +8,7 @@ import org.scalatest.{FlatSpec, Matchers}
 
 class VoxelTest extends FlatSpec with Matchers with MockitoSugar {
   "translate" should "offset along the correct axes" in {
-    Voxel(1, 2, 3) + Coordinate(4, 5, 6) shouldBe Voxel(5, 7, 9, DEFAULT_MATERIAL)
+    Voxel(1, 2, 3) + Coordinate(4, 5, 6) shouldBe Voxel(5, 7, 9, DEFAULT_BLOCK)
   }
 
   it should "work for negative values" in {
@@ -27,7 +26,7 @@ class VoxelTest extends FlatSpec with Matchers with MockitoSugar {
   "renderTo" should "call World.setBlock with the correct arguments" in {
     val mockWorld = mock[World]
     Voxel(0, 1, -4).renderTo(mockWorld)
-    verify(mockWorld).setBlock(0, 1, -4, DEFAULT_MATERIAL)
+    verify(mockWorld).setBlock(0, 1, -4, DEFAULT_BLOCK)
   }
 
   it should "work for non-default materials" in {
@@ -37,11 +36,11 @@ class VoxelTest extends FlatSpec with Matchers with MockitoSugar {
   }
 
   "apply" should "correctly construct a coordinate" in {
-    Voxel(1, 2, 3, DEFAULT_MATERIAL) shouldBe Voxel(Coordinate(1, 2, 3), DEFAULT_MATERIAL)
+    Voxel(1, 2, 3, DEFAULT_BLOCK) shouldBe Voxel(Coordinate(1, 2, 3), DEFAULT_BLOCK)
   }
 
   it should "default to the default material" in {
-    Voxel(1, 2, 3) shouldBe Voxel(1, 2, 3, DEFAULT_MATERIAL)
+    Voxel(1, 2, 3) shouldBe Voxel(1, 2, 3, DEFAULT_BLOCK)
   }
 
   it should "default to zero for the z-axis when passed a blcok" in {
