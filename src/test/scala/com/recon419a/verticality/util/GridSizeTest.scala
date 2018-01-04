@@ -20,6 +20,6 @@ class GridSizeTest extends FlatSpec with Matchers {
   }
 
   it should "throw an error for a height of zero" in {
-    an[IllegalArgumentException] should be thrownBy (GridSize(1, 0) shouldBe Size(11, 1, 11))
+    an[IllegalArgumentException] should be thrownBy GridSize(1, 0)
   }
 }
