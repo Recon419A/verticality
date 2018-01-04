@@ -9,4 +9,9 @@ class RoomTest extends FlatSpec with Matchers {
     Room().voxels should contain allOf(Voxel(0, 0, 0), Voxel(10, 4, 10))
     Room().voxels should contain allOf(Voxel(1, 1, 1, SimpleBlock.AIR), Voxel(9, 3, 9, SimpleBlock.AIR))
   }
+
+  it should "allow for non-default materials" in {
+    Room(SimpleBlock.ACACIA_FENCE).voxels.map(_.block) shouldBe Set(SimpleBlock.AIR, SimpleBlock.ACACIA_FENCE,
+      SimpleBlock.GLOWSTONE)
+  }
 }

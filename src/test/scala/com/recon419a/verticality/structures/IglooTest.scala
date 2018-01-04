@@ -1,6 +1,7 @@
 package com.recon419a.verticality.structures
 
 import com.recon419a.verticality.util.{GridCoordinate, Voxel}
+import net.morbz.minecraft.blocks.SimpleBlock
 import org.scalatest.{FlatSpec, Matchers}
 
 class IglooTest extends FlatSpec with Matchers {
@@ -14,5 +15,10 @@ class IglooTest extends FlatSpec with Matchers {
 
   it should "create a structure that is 1x1x2 in grid coordinates" in {
     Igloo().maxCoordinate shouldBe GridCoordinate(1, 1, 2)
+  }
+
+  it should "allow for use of non-default materials" in {
+    Igloo(SimpleBlock.ACACIA_FENCE).voxels.map(_.block) shouldBe Set(SimpleBlock.ACACIA_FENCE, SimpleBlock.GLOWSTONE,
+      SimpleBlock.AIR)
   }
 }

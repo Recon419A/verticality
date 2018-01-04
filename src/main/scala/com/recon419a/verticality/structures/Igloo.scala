@@ -5,6 +5,6 @@ import net.morbz.minecraft.blocks.SimpleBlock
 
 object Igloo {
   def apply(block: SimpleBlock = DEFAULT_BLOCK): Structure = {
-    (Room() + GridCoordinate(0, 0, 1)) + Hallway()
+    (Room(block) + GridCoordinate(0, 0, 1)) + Hallway(block)
   }
 }
