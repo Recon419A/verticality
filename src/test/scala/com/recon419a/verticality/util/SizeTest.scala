@@ -20,7 +20,7 @@ class SizeTest extends FlatSpec with Matchers {
   }
 
   it should "use one for the default depth" in {
-    Size(2, 3) shouldBe Size(2, 3, 1)
+    Size(2, 3).depth shouldBe 1
   }
 
   it should "throw an exception on negative size values" in {

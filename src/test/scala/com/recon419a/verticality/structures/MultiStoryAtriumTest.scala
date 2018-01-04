@@ -1,7 +1,6 @@
 package com.recon419a.verticality.structures
 
 import com.recon419a.verticality.util._
-import net.morbz.minecraft.blocks.SimpleBlock
 import org.scalatest.{FlatSpec, Matchers}
 
 class MultiStoryAtriumTest extends FlatSpec with Matchers {
@@ -34,14 +33,7 @@ class MultiStoryAtriumTest extends FlatSpec with Matchers {
     TestMultiStoryAtrium(Seq(wingFlags)) shouldBe TestAtrium(wingFlags)
   }
 
-  ignore should "create a room with lighting in lower hallways" in {
-    val wingFlags: Seq[Seq[Boolean]] = Seq.fill(2)(Seq.fill(4)(true))
-    TestMultiStoryAtrium(wingFlags).voxels
-      .filter(_.coordinate.y == 4).filter(_.block == SimpleBlock.GLOWSTONE) should not be Set.empty[Voxel]
-  }
-
   object TestMultiStoryAtrium extends MultiStoryAtrium {
     val atrium: TestAtrium.type = TestAtrium
   }
-
 }
