@@ -116,4 +116,8 @@ class StructureTest extends FlatSpec with Matchers with MockitoSugar {
     verify(mockWorld).setBlock(0, 1, 2, DEFAULT_BLOCK)
     verify(mockWorld).setBlock(3, 4, 8, SimpleBlock.ACACIA_FENCE)
   }
+
+  "apply" should "have no voxels by default" in {
+    Structure().voxels shouldBe Set.empty[Voxel]
+  }
 }

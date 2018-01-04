@@ -3,7 +3,7 @@ package com.recon419a.verticality.structures
 import com.recon419a.verticality.util.{Coordinate, Voxel}
 import net.morbz.minecraft.world.World
 
-case class Structure(voxels: Set[Voxel]) {
+case class Structure(voxels: Set[Voxel] = Set.empty[Voxel]) {
   def +(coordinate: Coordinate): Structure = {
     Structure(voxels.map(v => v + coordinate))
   }

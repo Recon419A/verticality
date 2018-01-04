@@ -5,10 +5,11 @@ import com.recon419a.verticality.util.GridCoordinate
 import scala.util.Random
 
 trait Atrium {
-  val structure: Structure
+  val wingStructure: Structure
+  val centerStructure: Structure
 
   def apply(wingFlags: Seq[Boolean] = Seq.fill(4)(Random.nextBoolean())): Structure = {
-    Room() ++ actualWings(wingFlags)
+    centerStructure ++ actualWings(wingFlags)
   }
 
   def actualWings(wingFlags: Seq[Boolean]): List[Structure] = {
@@ -18,10 +19,10 @@ trait Atrium {
   }
 
   def potentialWings: List[Structure] = {
-    val northWing = structure.rotateFlip + GridCoordinate(0, 0, -1)
-    val eastWing = structure.rotateCounterClockwise + GridCoordinate(1, 0)
-    val southWing = structure + GridCoordinate(0, 0, 1)
-    val westWing = structure.rotateClockwise + GridCoordinate(-1, 0)
+    val northWing = wingStructure.rotateFlip + GridCoordinate(0, 0, -1)
+    val eastWing = wingStructure.rotateCounterClockwise + GridCoordinate(1, 0)
+    val southWing = wingStructure + GridCoordinate(0, 0, 1)
+    val westWing = wingStructure.rotateClockwise + GridCoordinate(-1, 0)
     List(northWing, eastWing, southWing, westWing)
   }
 }
