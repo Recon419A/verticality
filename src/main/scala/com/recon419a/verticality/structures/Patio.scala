@@ -4,6 +4,6 @@ import net.morbz.minecraft.blocks.SimpleBlock
 
 object Patio {
   def apply(): Structure = {
-    Igloo(SimpleBlock.ACACIA_FENCE)
+    Structure(Igloo(SimpleBlock.ACACIA_FENCE).voxels.filter(_.coordinate.y == 1))
   }
 }
