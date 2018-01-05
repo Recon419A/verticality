@@ -8,7 +8,7 @@ object MultiStoryPatioAtrium extends MultiStoryAtrium {
   }
 
   def patioFlags(wingFlags: Seq[WingFlags]): Seq[WingFlags] = {
-    floorFlags(wingFlags).zip(ceilingFlags(wingFlags)).map({ case (fs, cs) => patioFlags(fs, cs) }).dropRight(1)
+    floorFlags(wingFlags).zip(ceilingFlags(wingFlags)).map({ case (fs, cs) => patioFlags(fs, cs) }).drop(1).dropRight(1)
   }
 
   def patioFlags(floorFlags: WingFlags, ceilingFlags: WingFlags): WingFlags = {
@@ -16,7 +16,7 @@ object MultiStoryPatioAtrium extends MultiStoryAtrium {
   }
 
   def floorFlags(wingFlags: Seq[WingFlags]): Seq[WingFlags] = {
-    Seq(WingFlags()) ++ wingFlags
+    Seq.fill(2)(WingFlags()) ++ wingFlags
   }
 
   def ceilingFlags(wingFlags: Seq[WingFlags]): Seq[WingFlags] = {
