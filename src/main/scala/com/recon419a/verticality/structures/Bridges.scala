@@ -19,7 +19,7 @@ object Bridges extends MultiStoryAtrium {
   }
 
   object BridgeAtrium extends Atrium {
-    override val wingStructure: Structure = Cuboid(Size(3, 11)) + Coordinate(4, 0, -10)
+    override val wingStructure: Structure = Cuboid(Size(3, 1, 11)) + Coordinate(4, 0, -10)
     override val centerStructure: Structure = Structure()
   }
 

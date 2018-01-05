@@ -22,8 +22,8 @@ class MultiStoryClosedAtriumTest extends FlatSpec with Matchers {
       .filter(_.coordinate.y == 4).filter(_.block == SimpleBlock.GLOWSTONE) should not be Set.empty[Voxel]
   }
 
-  it should "create a room with no floor in the middle" in {
-    testFullWingClosedAtrium.voxels should contain noneOf(Voxel(4, 4, 4), Voxel(5, 4, 7))
+  it should "create a room with no floor in the middle except bridges" in {
+    testFullWingClosedAtrium.voxels should contain noneOf(Voxel(2, 4, 2), Voxel(7, 4, 7))
   }
 
   object TestFullWingClosedAtrium {
