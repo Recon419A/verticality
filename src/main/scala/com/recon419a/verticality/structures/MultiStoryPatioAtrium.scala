@@ -20,6 +20,6 @@ object MultiStoryPatioAtrium extends MultiStoryAtrium {
   }
 
   def ceilingFlags(wingFlags: Seq[WingFlags]): Seq[WingFlags] = {
-    wingFlags ++ Seq(WingFlags())
+    wingFlags ++ Seq.fill(2)(WingFlags())
   }
 }

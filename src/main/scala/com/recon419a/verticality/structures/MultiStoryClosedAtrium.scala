@@ -4,6 +4,7 @@ object MultiStoryClosedAtrium extends MultiStoryAtrium {
   override val atrium: Atrium = ClosedAtrium
 
   override def apply(wingFlags: Seq[WingFlags]): Structure = {
-    super.apply(wingFlags) + CeilingRemovalLattice(wingFlags.size - 1) + MultiStoryPatioAtrium(wingFlags)
+    (super.apply(wingFlags) + CeilingRemovalLattice(wingFlags.size - 1) + MultiStoryPatioAtrium(wingFlags)
+      + Bridges(wingFlags))
   }
 }

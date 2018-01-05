@@ -24,6 +24,10 @@ object WingFlags {
     WingFlags(Random.nextBoolean(), Random.nextBoolean(), Random.nextBoolean(), Random.nextBoolean())
   }
 
+  def fill(): WingFlags = {
+    WingFlags(north = true, east = true, south = true, west = true)
+  }
+
   implicit def apply(wingFlags: Seq[Boolean]): WingFlags = {
     assert(wingFlags.lengthCompare(4) == 0)
     WingFlags(wingFlags.head, wingFlags(1), wingFlags(2), wingFlags(3))

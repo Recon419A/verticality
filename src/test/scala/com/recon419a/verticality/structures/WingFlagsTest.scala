@@ -55,4 +55,8 @@ class WingFlagsTest extends FlatSpec with Matchers {
   it should "take the logical and for a basic case" in {
     WingFlags(east = true, south = true) && WingFlags(east = true, north = true) shouldBe WingFlags(east = true)
   }
+
+  "fill" should "return all true" in {
+    WingFlags.fill() shouldBe WingFlags(north = true, east = true, south = true, west = true)
+  }
 }
