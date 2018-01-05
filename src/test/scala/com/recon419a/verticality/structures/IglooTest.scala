@@ -18,7 +18,6 @@ class IglooTest extends FlatSpec with Matchers {
   }
 
   it should "allow for use of non-default materials" in {
-    Igloo(SimpleBlock.ACACIA_FENCE).voxels.map(_.block) shouldBe Set(SimpleBlock.ACACIA_FENCE, SimpleBlock.GLOWSTONE,
-      SimpleBlock.AIR)
+    Igloo(SimpleBlock.ACACIA_FENCE).voxels.map(_.block) should contain(SimpleBlock.ACACIA_FENCE)
   }
 }

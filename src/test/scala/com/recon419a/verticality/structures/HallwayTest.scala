@@ -11,7 +11,6 @@ class HallwayTest extends FlatSpec with Matchers {
   }
 
   it should "allow for non-default materials" in {
-    Hallway(SimpleBlock.ACACIA_FENCE).voxels.map(_.block) shouldBe Set(SimpleBlock.ACACIA_FENCE, SimpleBlock.GLOWSTONE,
-      SimpleBlock.AIR)
+    Hallway(SimpleBlock.ACACIA_FENCE).voxels.map(_.block) should contain(SimpleBlock.ACACIA_FENCE)
   }
 }
