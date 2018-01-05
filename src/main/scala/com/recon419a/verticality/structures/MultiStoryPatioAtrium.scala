@@ -8,11 +8,13 @@ object MultiStoryPatioAtrium extends MultiStoryAtrium {
   }
 
   def patioFlags(wingFlags: Seq[WingFlags]): Seq[WingFlags] = {
-    floorFlags(wingFlags).zip(ceilingFlags(wingFlags)).map({ case (fs, cs) => patioFlags(fs, cs) }).drop(1).dropRight(1)
+    val ffs = floorFlags(wingFlags)
+    val cfs = ceilingFlags(wingFlags)
+    wingFlags.indices.map(i => patioFlags(ffs(i + 1), cfs(i + 1), wingFlags(i)))
   }
 
-  def patioFlags(floorFlags: WingFlags, ceilingFlags: WingFlags): WingFlags = {
-    floorFlags.zip(ceilingFlags).map({ case (f, c) => f && !c })
+  def patioFlags(floorFlags: WingFlags, ceilingFlags: WingFlags, wingFlags: WingFlags): WingFlags = {
+    (floorFlags, ceilingFlags, wingFlags).zipped.map({ case (f, c, w) => f && !c && !w })
   }
 
   def floorFlags(wingFlags: Seq[WingFlags]): Seq[WingFlags] = {

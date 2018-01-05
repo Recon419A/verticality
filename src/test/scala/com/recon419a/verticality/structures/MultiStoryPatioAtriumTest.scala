@@ -41,27 +41,41 @@ class MultiStoryPatioAtriumTest extends FlatSpec with Matchers {
   }
 
   "patioFlags" should "return an empty for a level with no floors and no ceilings" in {
-    patioFlags(WingFlags(), WingFlags()) shouldBe WingFlags()
+    patioFlags(WingFlags(), WingFlags(), WingFlags()) shouldBe WingFlags()
   }
 
-  it should "return a fill for a level with all floors and no ceilings" in {
-    patioFlags(WingFlags.fill(), WingFlags()) shouldBe WingFlags.fill()
+  it should "return a fill for a level with all floors and no ceilings and no wings" in {
+    patioFlags(WingFlags.fill(), WingFlags(), WingFlags()) shouldBe WingFlags.fill()
   }
 
   it should "return an empty for a level with all floors and all ceilings" in {
-    patioFlags(WingFlags.fill(), WingFlags.fill()) shouldBe WingFlags()
+    patioFlags(WingFlags.fill(), WingFlags.fill(), WingFlags()) shouldBe WingFlags()
   }
 
   it should "return a pattern for a level with all floors and a pattern ceiling" in {
-    patioFlags(WingFlags.fill(), WingFlags(east = true, south = true)) shouldBe WingFlags(north = true, west = true)
+    patioFlags(WingFlags.fill(), WingFlags(east = true, south = true), WingFlags()) shouldBe
+      WingFlags(north = true, west = true)
   }
 
   it should "return a pattern for a level with pattern floors and no ceiling" in {
-    patioFlags(WingFlags(east = true, south = true), WingFlags()) shouldBe WingFlags(east = true, south = true)
+    patioFlags(WingFlags(east = true, south = true), WingFlags(), WingFlags()) shouldBe
+      WingFlags(east = true, south = true)
+  }
+
+  it should "return an empty for a level with all floors, no ceiling, and all wings" in {
+    patioFlags(WingFlags.fill(), WingFlags(), WingFlags.fill()) shouldBe WingFlags()
   }
 
   it should "return a sequence the same length as the one passed in" in {
     patioFlags(Seq.fill(7)(WingFlags())).size shouldBe 7
+  }
+
+  it should "have no patios in a single-floor fill" in {
+    patioFlags(Seq(WingFlags.fill())) shouldBe Seq(WingFlags())
+  }
+
+  it should "have a second-story patio in a single-floor fill topped by an empty" in {
+    patioFlags(Seq(WingFlags.fill(), WingFlags())) shouldBe Seq(WingFlags(), WingFlags.fill())
   }
 
   it should "have no patios in a fill-empty-fill arrangement" in {
@@ -75,5 +89,9 @@ class MultiStoryPatioAtriumTest extends FlatSpec with Matchers {
   it should "have a patio on the second layer for a fill-empty-empty-fill arrangement" in {
     patioFlags(Seq(WingFlags.fill(), WingFlags(), WingFlags(), WingFlags.fill())) shouldBe
       Seq(WingFlags(), WingFlags.fill(), WingFlags(), WingFlags())
+  }
+
+  it should "have no patios in a fill-fill arrangement" in {
+    patioFlags(Seq(WingFlags.fill(), WingFlags.fill())) shouldBe Seq(WingFlags(), WingFlags())
   }
 }

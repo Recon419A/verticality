@@ -29,7 +29,7 @@ object WingFlags {
   }
 
   implicit def apply(wingFlags: Seq[Boolean]): WingFlags = {
-    assert(wingFlags.lengthCompare(4) == 0)
+    assert(wingFlags.lengthCompare(4) == 0, wingFlags.size + " was not 4")
     WingFlags(wingFlags.head, wingFlags(1), wingFlags(2), wingFlags(3))
   }
 }
