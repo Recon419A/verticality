@@ -11,8 +11,7 @@ class MultiStoryClosedAtriumTest extends FlatSpec with Matchers {
     MultiStoryClosedAtrium.atrium shouldBe ClosedAtrium
   }
 
-  // "apply"
-  ignore should "create a room between (-2, 0, -2) and (3, 2, 3) for all true flags" in {
+  "apply" should "create a room between (-2, 0, -2) and (3, 2, 3) for all true flags" in {
     testFullWingClosedAtrium.maxCoordinate shouldBe GridCoordinate(3, 2, 3)
     testFullWingClosedAtrium.minCoordinate shouldBe GridCoordinate(-2, 0, -2)
   }
