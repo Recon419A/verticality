@@ -47,4 +47,12 @@ class WingFlagsTest extends FlatSpec with Matchers {
   "north" should "return north" in {
     WingFlags(north = true).north shouldBe true
   }
+
+  "&&" should "return all false if one of the values is all false" in {
+    testWingFlags && WingFlags(east = true) shouldBe testWingFlags
+  }
+
+  it should "take the logical and for a basic case" in {
+    WingFlags(east = true, south = true) && WingFlags(east = true, north = true) shouldBe WingFlags(east = true)
+  }
 }

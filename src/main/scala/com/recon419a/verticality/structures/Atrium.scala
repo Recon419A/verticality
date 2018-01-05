@@ -2,17 +2,15 @@ package com.recon419a.verticality.structures
 
 import com.recon419a.verticality.util.GridCoordinate
 
-import scala.util.Random
-
 trait Atrium {
   val wingStructure: Structure
   val centerStructure: Structure
 
-  def apply(wingFlags: Seq[Boolean] = Seq.fill(4)(Random.nextBoolean())): Structure = {
+  def apply(wingFlags: WingFlags = WingFlags.random()): Structure = {
     centerStructure ++ actualWings(wingFlags)
   }
 
-  def actualWings(wingFlags: Seq[Boolean]): List[Structure] = {
+  def actualWings(wingFlags: WingFlags): List[Structure] = {
     potentialWings.zip(wingFlags).collect {
       case (wing, flag) if flag => wing
     }

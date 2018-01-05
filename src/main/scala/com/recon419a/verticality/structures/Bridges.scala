@@ -5,7 +5,7 @@ import com.recon419a.verticality.util.{Coordinate, Size}
 object Bridges extends MultiStoryAtrium {
   override val atrium: Atrium = BridgeAtrium
 
-  override def apply(wingFlags: Seq[Seq[Boolean]]): Structure = {
+  override def apply(wingFlags: Seq[WingFlags]): Structure = {
     super.apply(wingFlags)
   }
 

@@ -27,7 +27,7 @@ class MultiStoryClosedAtriumTest extends FlatSpec with Matchers {
 
   object TestFullWingClosedAtrium {
     def apply(): Structure = {
-      val wingFlags: Seq[Seq[Boolean]] = Seq.fill(2)(Seq.fill(4)(true))
+      val wingFlags: Seq[WingFlags] = Seq.fill(2)(Seq.fill(4)(true))
       MultiStoryClosedAtrium(wingFlags)
     }
   }
