@@ -14,6 +14,7 @@ class StructureTest extends FlatSpec with Matchers with MockitoSugar {
 
   private val testCuboid1 = Cuboid(Size(2, 1))
   private val testCuboid2: Structure = Cuboid(Size(2, 1), SimpleBlock.ACACIA_FENCE) + Coordinate(1, 0)
+  private val testOffsetPixel = Structure(Set(Voxel(5, 2, 5)))
 
   it should "correctly translate two voxels" in {
     (testCuboid1 + Coordinate(1, 2, 3)).voxels shouldBe Set(Voxel(1, 2, 3), Voxel(2, 2, 3))
@@ -108,6 +109,22 @@ class StructureTest extends FlatSpec with Matchers with MockitoSugar {
   it should "be the minimum of a bounding box for a rotated L-shape" in {
     ((testCuboid1 + GridCoordinate(-1, 0)) + (testCuboid1 + GridCoordinate(0, -1)))
       .minCoordinate shouldBe GridCoordinate(-1, -1)
+  }
+
+  "occupied" should "return true for an occupied cell" in {
+    testCuboid1.occupied(Coordinate(1, 0)) shouldBe true
+  }
+
+  it should "return false for an unoccupied cell" in {
+    testCuboid1.occupied(Coordinate(10, 0)) shouldBe false
+  }
+
+  "gridOccupied" should "return true for an occupied grid cell" in {
+    testOffsetPixel.gridOccupied(GridCoordinate(0, 0)) shouldBe true
+  }
+
+  it should "return false for an unoccupied grid cell" in {
+    testOffsetPixel.gridOccupied(GridCoordinate(1, 0)) shouldBe false
   }
 
   "renderTo" should "call setBlock with the correct arguments" in {

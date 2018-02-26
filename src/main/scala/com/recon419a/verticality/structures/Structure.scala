@@ -1,6 +1,7 @@
 package com.recon419a.verticality.structures
 
-import com.recon419a.verticality.util.{Coordinate, Voxel}
+import com.recon419a.verticality.util.{Coordinate, GridCoordinate, Voxel}
+import net.morbz.minecraft.blocks.SimpleBlock
 import net.morbz.minecraft.world.World
 
 case class Structure(voxels: Set[Voxel] = Set.empty[Voxel]) {
@@ -48,6 +49,15 @@ case class Structure(voxels: Set[Voxel] = Set.empty[Voxel]) {
     val yMin = voxels.map(_.coordinate.y).min
     val zMin = voxels.map(_.coordinate.z).min
     Coordinate(xMin, yMin, zMin)
+  }
+
+  def occupied(coordinate: Coordinate): Boolean = {
+    voxels.exists(v => v.coordinate == coordinate && v.block != SimpleBlock.AIR)
+  }
+
+  def gridOccupied(gridCoordinate: Coordinate): Boolean = {
+    val coordinates = gridCoordinate to (gridCoordinate + GridCoordinate(1, 1, 1))
+    voxels.exists(v => coordinates.contains(v.coordinate) && v.block != SimpleBlock.AIR)
   }
 
   def voxel(coordinate: Coordinate): Option[Voxel] = {
