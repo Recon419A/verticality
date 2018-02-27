@@ -2,6 +2,6 @@ package com.recon419a.verticality.structures
 
 object Dungeon {
   def apply(): Structure = {
-    RecursiveMultiStoryAtrium()
+    MultiStoryClosedAtrium(4)
   }
 }
