@@ -23,4 +23,8 @@ class MultiStoryStairsClockwiseAtriumTest extends FlatSpec with Matchers {
   it should "return an offset patterned WingFlags for a full first floor and a patterned upper floor" in {
     stairFlags(WingFlags.fill(), WingFlags(north = true, west = true)) shouldBe WingFlags(west = true, south = true)
   }
+
+  it should "return a single staircase for a single valid location" in {
+    stairFlags(WingFlags(north = true), WingFlags(east = true)) shouldBe WingFlags(north = true)
+  }
 }
