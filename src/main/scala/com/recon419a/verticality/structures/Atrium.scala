@@ -6,14 +6,18 @@ trait Atrium {
   val wingStructure: Structure
   val centerStructure: Structure
 
-  def apply(wingFlags: WingFlags = WingFlags.random()): Structure = {
-    centerStructure ++ actualWings(wingFlags)
+  def apply(wingFlags: WingFlags = WingFlags.random(), existingStructure: Structure = Structure()): Structure = {
+    centerStructure ++ nonCollidingWings(wingFlags, existingStructure)
   }
 
   def actualWings(wingFlags: WingFlags): List[Structure] = {
     potentialWings.zip(wingFlags).collect {
       case (wing, flag) if flag => wing
     }
+  }
+
+  def nonCollidingWings(wingFlags: WingFlags, existingStructure: Structure): List[Structure] = {
+    actualWings(wingFlags).filterNot(_.collides(existingStructure))
   }
 
   def potentialWings: List[Structure] = {

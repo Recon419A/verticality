@@ -127,6 +127,14 @@ class StructureTest extends FlatSpec with Matchers with MockitoSugar {
     testOffsetPixel.gridOccupied(GridCoordinate(1, 0)) shouldBe false
   }
 
+  "collides" should "return true for the same structure" in {
+    testCuboid1.collides(testCuboid1) shouldBe true
+  }
+
+  it should "return false for a non-overlapping structure" in {
+    testCuboid1.collides(testOffsetPixel) shouldBe false
+  }
+
   "renderTo" should "call setBlock with the correct arguments" in {
     val mockWorld = mock[World]
     Structure(Set(Voxel(0, 1, 2), Voxel(3, 4, 8, SimpleBlock.ACACIA_FENCE))).renderTo(mockWorld)

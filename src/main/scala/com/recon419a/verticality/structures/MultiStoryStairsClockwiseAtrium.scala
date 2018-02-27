@@ -3,8 +3,8 @@ package com.recon419a.verticality.structures
 object MultiStoryStairsClockwiseAtrium extends MultiStoryAtrium {
   override val atrium: Atrium = StairsClockwiseAtrium
 
-  override def apply(wingFlags: Seq[WingFlags]): Structure = {
-    super.apply(stairFlags(wingFlags))
+  override def apply(wingFlags: Seq[WingFlags], existingStructure: Structure = Structure()): Structure = {
+    super.apply(stairFlags(wingFlags), existingStructure)
   }
 
   def stairFlags(wingFlags: Seq[WingFlags]): Seq[WingFlags] = {

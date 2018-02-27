@@ -60,6 +60,10 @@ case class Structure(voxels: Set[Voxel] = Set.empty[Voxel]) {
     voxels.exists(v => coordinates.contains(v.coordinate) && v.block != SimpleBlock.AIR)
   }
 
+  def collides(structure: Structure): Boolean = {
+    structure.voxels.exists(v => occupied(v.coordinate))
+  }
+
   def voxel(coordinate: Coordinate): Option[Voxel] = {
     voxels.find(_.coordinate == coordinate)
   }
